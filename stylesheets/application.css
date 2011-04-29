@@ -1,0 +1,9 @@
+body { 
+  vertical-align: baseline;
+  text-align: center;
+}
+.container {
+  width: 880px;
+  text-align: left;
+  margin: auto auto;
+}

@@ -1,0 +1,79 @@
+---
+layout: page
+---
+
+h1. Getting Started
+ 
+ To run the RubySpecs, you need to get MSpec and the RubySpec files.
+ 
+ h2. Getting MSpec
+ 
+ MSpec is the framework and scripts for running the RubySpecs. It is available as a gem or directly from "Github":http://github.com/rubyspec/mspec/tree/master.
+ 
+ <pre>
+ $ sudo gem install mspec
+ </pre>
+ 
+ OR
+ 
+ <pre>
+ $ git clone git://github.com/rubyspec/mspec.git
+ </pre>
+ 
+ If you are going to be working on the RubySpecs, you are _strongly_ encouraged to always use the latest MSpec from Github.
+ 
+ h2. Getting the RubySpecs
+ 
+ The RubySpec source is available from "Github":http://github.com/rubyspec/rubyspec/tree/master.
+ 
+ <pre>
+ $ git clone git://github.com/rubyspec/rubyspec.git
+ </pre>
+ 
+ If you are not working on the RubySpecs, you can checkout a particular version with the following command:
+ 
+ <pre>
+ $ git checkout -f -b stable v0.7.3
+ </pre>
+ 
+ Check the "News":http://rubyspec.org/projects/rubyspec/news page for the most recent stable release.
+ 
+ h2. Running the RubySpecs
+ 
+ If you cloned MSpec from Github, put the @mspec/bin@ directory in your PATH. The simplest way to run the specs is to change to the RubySpec directory and invoke @mspec@.
+ 
+ <pre>
+ $ cd rubyspec
+ $ mspec
+ </pre>
+ 
+ This will run the specs with the @ruby@ executable on PATH. To run the specs with a different implementation, see the @-t@ or <code>--target</code> option to mspec. See <code>mspec -h</code> for more details. Read the "Runners":/wiki/mspec/Runners documentation for complete details on all the runner scripts.
+ 
+ To run a single directory of specs, pass the path to the directory to @mspec@. To run a single file, pass the name of the file.
+ 
+ <pre>
+ $ cd rubyspec
+ $ mspec core/array
+ $ mspec core/array/append_spec.rb
+ </pre>
+ 
+ The @ruby.1.8.mspec@ and @ruby.1.9.mspec@ config files also provide psuedo-directories that will include all the appropriate files for the version.
+ 
+ <pre>
+ $ mspec :core
+ $ mspec :library
+ $ mspec :language
+ </pre>
+ 
+ The psuedo-directory for @:library@ is the most useful since there are both 1.8 and 1.9 specific libraries in the <code>rubyspec/library</code> directory.
+ 
+ h2. Runner script help
+ 
+ To see more help for the particular runner scripts:
+ 
+ <pre>
+ $ mspec run -h
+ $ mspec ci -h
+ $ mspec tag -h
+ </pre>
+
