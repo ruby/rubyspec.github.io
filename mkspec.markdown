@@ -1,6 +1,6 @@
- ---
- layout: page
- ---
+---
+layout: page
+---
 
  h1. Creating files with mkspec
  

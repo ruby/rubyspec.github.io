@@ -1,9 +1,40 @@
 body { 
   vertical-align: baseline;
   text-align: center;
+  font-family: helvetica, "helvetica neue", arial, sans-serif;
+}
+div.highlight {
+  padding: 0.25em 0.15em;
+}
+.highlight pre {
+  margin: 0 0;
 }
 .container {
   width: 880px;
   text-align: left;
   margin: auto auto;
+}
+.header {
+  border-bottom: 1px solid #aaa;
+  padding-bottom: 2em;
+}
+.header h1 {
+  margin-bottom: 0.05em;
+}
+.header h1 a {
+  text-decoration: none;
+  color: #000;
+  font-size: 2em;
+}
+.header h1 a:hover {
+  text-decoration: none;
+  color: #000;
+}
+.tagline {
+  margin: 0 0;
+}
+.footer {
+  margin-top: 2em;
+  border-top: 1px solid #aaa;
+  padding-top: 1em;
 }
