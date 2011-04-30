@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>RubySpec :
+      The Standard You Trust&#8482;</title>
+    <link href="/stylesheets/application.css" media="screen" rel="stylesheet" type="text/css" />
+    <link href="/stylesheets/pygments.css" media="screen" rel="stylesheet" type="text/css" />
+  </head>
+    <body>
+    <div class='container header'>
+  <h1><a href='/'>RubySpec</a></h1>
+  <p class='tagline'>The standard you trust&#8482;</p>
+</div>
+
+    <div class='container'>
+      <h2 id="how-to-deal-with-bugs-found-in-mri-while-writing-specs">How to deal with bugs found in MRI while writing specs</h2>
+
+<p>It is often hard to know whether a particular behavior in MRI is a bug or just
+surprising or inconsistent behavior. If the issue is a segfault, then it is
+certainly a bug. If the issue is an infinite loop or threading deadlock, it is
+also certainly a bug. Otherwise, it may or may not be a bug. That&rsquo;s up to Matz
+to decide.</p>
+
+<p>When encountering a bug in MRI, use the following steps:</p>
+
+<ol>
+  <li>Search the <a href="http://redmine.ruby-lang.org/">Redmine MRI bug tracker</a> and the
+ruby-core mailing list for the same or similar behavior.</li>
+  <li>If there is an existing ticket for the issue, use the ticket number in a
+<code>ruby_bug</code> guard.</li>
+  <li>If there is a ticket for version 1.9 but the bug also exists in version
+1.8.7, file a backport request ticket. Use the 1.9 ticket number in the
+<code>ruby_bug</code> guard.</li>
+  <li>If there is not an existing ticket, file one and use the ticket number in
+the <code>ruby_bug</code> guard.</li>
+</ol>
+
+    </div>
+        <div class='container footer'>
+      <p><a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/"><img
+  alt="Creative Commons License" style="border-width:0"
+  src="http://i.creativecommons.org/l/by-nc-sa/3.0/88x31.png" /></a>
+  rubyspec.org is Copyright &copy; 2011 <a
+    href='http://blog.brightredglow.com'>Brian Ford</a>
+</p>
+
+    </div>
+
+  </body>
+
+</html>

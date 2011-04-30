@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>RubySpec :
+      The Standard You Trust&#8482;</title>
+    <link href="/stylesheets/application.css" media="screen" rel="stylesheet" type="text/css" />
+    <link href="/stylesheets/pygments.css" media="screen" rel="stylesheet" type="text/css" />
+  </head>
+    <body>
+    <div class='container header'>
+  <h1><a href='/'>RubySpec</a></h1>
+  <p class='tagline'>The standard you trust&#8482;</p>
+</div>
+
+    <div class='container'>
+      <h2 id="guards">Guards</h2>
+
+<h3 id="overview">Overview</h3>
+
+<p>The RubySpec project intends to provide a complete specification of the Ruby
+language and its libraries. There is a single <em>standard</em> implementation of
+Ruby. The <em>standard</em> includes the stable, released versions available from
+http://ruby-lang.org. At present, the <em>standard</em> is 1.8.6, 1.8.7, and 1.9.2.
+Collectively, the <em>standard</em> is often referred to as MatzRuby or MRI.</p>
+
+<p>The challenge for RubySpec is to correctly spec the different behaviors
+across versions, platforms, and implementations. To do this, the RubySpecs
+depend on <em>guards</em> provided by MSpec. Guards are methods that may or may not
+take arguments and operate by yielding to a block if certain conditions are
+true. If the conditions for the guard are not true, the guard method does not
+yield to the block and the specs contained in the block are not run.</p>
+
+<p>The guards serve two functions: 1) controlling which specs are run; 2)
+documenting the specs. The documentation function of the guards is as
+important for RubySpec as controlling which specs are run. Additionally, the
+guard structure itself was chosen to be visually and conceptually similar to
+the <code>describe/it</code> blocks in the specs.</p>
+
+<p>The guard blocks should be placed around <code>describe</code> or <code>it</code> blocks. Guards
+should <em>not</em> be placed inside <code>it</code> blocks. The <code>it</code> description string should
+concisely describe the facet of behavior illustrated by the example code. If
+a guard is present, it necessarily means the guarded code behaves
+differently. That difference should be described in the <code>it</code> string. In the
+case of <code>before</code> or <code>after</code> actions, use judgment to keep the specs concise
+but clear. If clarity would be enhanced by a few more lines of code, put the
+guards around the <code>before</code> or <code>after</code> action itself. Clarity always trumps
+counts of lines of code.</p>
+
+<p>There are five categories of guards:</p>
+
+<ol>
+  <li>versions</li>
+  <li>platforms</li>
+  <li>bugs</li>
+  <li>implementations</li>
+  <li>environments</li>
+</ol>
+
+<p>The specific guards in each of these categories are explained below.</p>
+
+<h3 id="versions">1. Versions</h3>
+
+<p>Different versions of Ruby have some methods that behave differently. That
+sounds circular, but it is the essence of software versions. To handle
+different version behaviors, MSpec provides the <code>ruby_version_is</code>
+guard.</p>
+
+<p>The <code>ruby_version_is</code> guard has two forms. One form gives a single
+version. Any implementation whose version number is greater than or equal to
+the version in the guard will run the guarded specs. The second form takes a
+range of versions. Any implementation whose version number is in the range
+will run the guarded specs. See the examples below and note the range form of
+the guard may include or exclude the ending version.</p>
+
+<div class="highlight"><pre><code class="ruby"><span class="lineno"> 1</span> <span class="c1"># Yields block if version &gt;= 1.8.6-p114.</span>
+<span class="lineno"> 2</span> <span class="n">ruby_version_is</span> <span class="s2">&quot;1.8.6.114&quot;</span> <span class="k">do</span>
+<span class="lineno"> 3</span>   <span class="n">it</span> <span class="s2">&quot;returns true&quot;</span> <span class="k">do</span>
+<span class="lineno"> 4</span>   <span class="k">end</span>
+<span class="lineno"> 5</span> <span class="k">end</span>
+<span class="lineno"> 6</span> 
+<span class="lineno"> 7</span> <span class="c1"># Yields block if version is in the 1.8 series, except 1.8.7 and beyond.</span>
+<span class="lineno"> 8</span> <span class="n">ruby_version_is</span> <span class="s2">&quot;1.8&quot;</span> <span class="o">.</span><span class="n">.</span> <span class="s2">&quot;1.8.6&quot;</span> <span class="k">do</span>
+<span class="lineno"> 9</span>   <span class="n">it</span> <span class="s2">&quot;returns nil&quot;</span> <span class="k">do</span>
+<span class="lineno">10</span>   <span class="k">end</span>
+<span class="lineno">11</span> <span class="k">end</span>
+<span class="lineno">12</span> 
+<span class="lineno">13</span> <span class="c1"># Yields block if version &lt; 1.9.</span>
+<span class="lineno">14</span> <span class="n">ruby_version_is</span> <span class="s2">&quot;&quot;</span> <span class="o">.</span><span class="n">.</span><span class="o">.</span> <span class="s2">&quot;1.9&quot;</span> <span class="k">do</span>
+<span class="lineno">15</span>   <span class="n">it</span> <span class="s2">&quot;returns false&quot;</span> <span class="k">do</span>
+<span class="lineno">16</span>   <span class="k">end</span>
+<span class="lineno">17</span> <span class="k">end</span>
+</code></pre>
+</div>
+
+<p>The <code>ruby_version_is</code> guard takes one argument that may be a
+string or a range of two strings. The format of the string is A.B.C.D, where:</p>
+
+<ul>
+  <li>A is the major version</li>
+  <li>B is the minor version</li>
+  <li>C is the tiny (teeny) version</li>
+  <li>D is the patchlevel</li>
+</ul>
+
+<p>The string is converted to a number on which comparisons between versions can
+be made so that, for instance, &ldquo;1.8.6.37&rdquo; is less than &ldquo;1.8.6.112&rdquo;.</p>
+
+<p>The range behaves as expected, respecting <code>#exclude_end?</code>. In the
+example above, &ldquo;&rdquo; &hellip; &ldquo;1.9&rdquo; means every version <em>before</em> 1.9.</p>
+
+<h3 id="platforms">2. Platforms</h3>
+
+<p>A single version of Ruby may have different behaviors depending on the
+platform on which it runs. MSpec provides several guards for these
+situations:</p>
+
+<ul>
+  <li>big_endian</li>
+  <li>little_endian</li>
+  <li>platform_is</li>
+  <li>platform_is_not</li>
+</ul>
+
+<p>The <code>big_endian</code> guard yields to the block if the platform is big endian.
+Likewise for the <code>little_endian</code> guard.</p>
+
+<p>The <code>platform_is</code> and <code>platform_is_not</code> guards are more
+complex. As their names suggest, they are inverses.</p>
+
+<div class="highlight"><pre><code class="ruby"><span class="lineno">1</span> <span class="n">platform_is</span> <span class="ss">:linux</span><span class="p">,</span> <span class="ss">:bsd</span> <span class="k">do</span>
+<span class="lineno">2</span>   <span class="n">it</span> <span class="s2">&quot;opens the file&quot;</span> <span class="k">do</span>
+<span class="lineno">3</span>   <span class="k">end</span>
+<span class="lineno">4</span> <span class="k">end</span>
+</code></pre>
+</div>
+
+<p>The guard above will yield if RUBY_PLATFORM matches either &ldquo;linux&rdquo; OR &ldquo;bsd&rdquo;.</p>
+
+<div class="highlight"><pre><code class="ruby"><span class="lineno">1</span> <span class="n">platform_is</span> <span class="ss">:linux</span><span class="p">,</span> <span class="ss">:wordsize</span> <span class="o">=&gt;</span> <span class="mi">32</span> <span class="k">do</span>
+<span class="lineno">2</span>   <span class="n">it</span> <span class="s2">&quot;opens the file&quot;</span> <span class="k">do</span>
+<span class="lineno">3</span>   <span class="k">end</span>
+<span class="lineno">4</span> <span class="k">end</span>
+</code></pre>
+</div>
+
+<p>The guard above will yield if RUBY_PLATFORM matches &ldquo;linux&rdquo; AND the processor
+word size is 32-bit.</p>
+
+<div class="highlight"><pre><code class="ruby"><span class="lineno">1</span> <span class="n">platform_is_not</span> <span class="ss">:windows</span><span class="p">,</span> <span class="ss">:wordsize</span> <span class="o">=&gt;</span> <span class="mi">32</span> <span class="k">do</span>
+<span class="lineno">2</span>   <span class="n">it</span> <span class="s2">&quot;opens the file&quot;</span> <span class="k">do</span>
+<span class="lineno">3</span>   <span class="k">end</span>
+<span class="lineno">4</span> <span class="k">end</span>
+</code></pre>
+</div>
+
+<p>The guard above will yield if RUBY_PLATFORM does not matches &ldquo;windows&rdquo; AND
+the processor word size is not 32-bit.</p>
+
+<p>Special functionality exists for matching :windows and :java as platforms.
+For details, refer to the MSpec source.</p>
+
+<div class="highlight"><pre><code class="ruby"><span class="lineno">1</span> <span class="n">platform_is</span> <span class="ss">:os</span> <span class="o">=&gt;</span> <span class="o">[</span><span class="ss">:darwin</span><span class="p">,</span> <span class="ss">:bsd</span><span class="o">]</span> <span class="k">do</span>
+<span class="lineno">2</span>   <span class="n">it</span> <span class="s2">&quot;opens the file&quot;</span> <span class="k">do</span>
+<span class="lineno">3</span>   <span class="k">end</span>
+<span class="lineno">4</span> <span class="k">end</span>
+</code></pre>
+</div>
+
+<p>The guard above will yield if <code>Config::CONFIG['host_os']</code> matches
+either &ldquo;darwin&rdquo; OR &ldquo;BSD&rdquo;. If <code>Config::CONFIG['host_os']</code> is not
+set in rbconfig, the :os parameters will be matched against RUBY_PLATFORM
+instead.</p>
+
+<p>h3. 3. Bugs</p>
+
+<p>Sometimes a bug is discovered in the <em>standard</em>. In this case, we do two things:</p>
+
+<ol>
+  <li>File a ticket on the &ldquo;bug tracker&rdquo;:http://redmine.ruby-lang.org/ to find</li>
+  <li>out if the suspected behavior is actually considered a bug.</li>
+  <li>Add a <code>ruby_bug</code> guard that wraps the spec showing what is considered to be</li>
+  <li>the <em>correct</em> behavior.</li>
+</ol>
+
+<div class="highlight"><pre><code class="ruby"><span class="lineno">1</span> <span class="n">ruby_bug</span> <span class="s2">&quot;#5555&quot;</span><span class="p">,</span> <span class="s2">&quot;1.8.6.114&quot;</span> <span class="k">do</span>
+<span class="lineno">2</span>   <span class="n">it</span> <span class="s2">&quot;returns the sum&quot;</span> <span class="k">do</span>
+<span class="lineno">3</span>     <span class="p">(</span><span class="mi">1</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">should</span> <span class="o">==</span> <span class="mi">2</span>
+<span class="lineno">4</span>   <span class="k">end</span>
+<span class="lineno">5</span> <span class="k">end</span>
+</code></pre>
+</div>
+
+<p>The above guard will NOT yield to the block on any version of the <em>standard</em>
+less than or equal to 1.8.6 patchlevel 114.</p>
+
+<p>The <code>ruby_bug</code> guard serves three purposes:</p>
+
+<ol>
+  <li>It documents that there is a bug in a particular version of the standard
+and refers to the ticket for that bug.</li>
+  <li>It provides the correct behavior description for all implementations</li>
+  <li>It prevents the spec for the correct behavior from running (and failing) on
+versions of the <em>standard</em> implementation that have the bug and have
+already been released.</li>
+</ol>
+
+<p>If it is determined that the behavior is not a bug but rather a version
+difference, the <code>ruby_bug</code> guard should be replaced by an appropriate
+<code>ruby_version_is</code> guard.</p>
+
+<h3 id="implementations">4. Implementations</h3>
+
+<p>Ideally, all Ruby implementations would have exactly the same behaviors. This
+is not realistically possible given differences in the underlying technology,
+for instance, whether the process <code>fork</code> facility is available.</p>
+
+<p>It should be obvious, but it bears repeating, that in a specification for a
+standard, there should be an absolute minimum of incompatible behavior. These
+guards are not provided to make it easy to be inconsistent. Rather, they are
+provided to make specifying a single standard as simple as possible,
+recognizing that 100% conformity is an impossible ideal.</p>
+
+<p>Recall that the purpose of the guards are <em>both</em> to control which specs are
+run AND document the specs. There are four distinct situations covered by the
+five guards below. Each of the guards documents this difference.</p>
+
+<ul>
+  <li>compliant_on</li>
+  <li>not_compliant_on</li>
+  <li>not_supported_on</li>
+  <li>deviates_on</li>
+  <li>extended_on</li>
+</ul>
+
+<p>Keep in mind that the arguments to these guards are communal property (as are
+all the specs) and respect them as you would want to be respected. There is
+no concept of opt-in or opt-out here. Every implementation is responsible for
+ensuring that their implementation&rsquo;s behavior is accurately represented in
+one of these compliance scenarios. If an implementation has an excessive
+number of non-compliant behaviors, this will be clearly visible in the specs.</p>
+
+<h4 id="complianton--notcomplianton">4.1 compliant_on / not_compliant_on</h4>
+
+<p>The <code>compliant_on</code> and <code>not_compliant_on</code> guards are inverses.
+They document that the enclosed spec passes or does not pass on the listed
+implementations or platforms.</p>
+
+<div class="highlight"><pre><code class="ruby"><span class="lineno">1</span> <span class="n">compliant_on</span> <span class="ss">:jruby</span><span class="p">,</span> <span class="ss">:rubinius</span> <span class="k">do</span>
+<span class="lineno">2</span>   <span class="n">it</span> <span class="s2">&quot;returns true&quot;</span> <span class="k">do</span>
+<span class="lineno">3</span>   <span class="k">end</span>
+<span class="lineno">4</span> <span class="k">end</span>
+</code></pre>
+</div>
+
+<p>The spec above will run ONLY on the <em>standard</em>, JRuby, or Rubinius. The
+<code>compliant_on</code> guard will not run on any other implementation or platform
+except the ones listed.</p>
+
+<p>Note that this guard could prevent the guarded spec from running on an
+implementation that passes the spec. It is important to only use it in cases
+where the behavior is clearly supported only on the listed implementations.
+Generally, it is better to use <code>not_compliant_on</code> to explicitly
+blacklist implementations.</p>
+
+<p>There is no need to list :ruby for this guard. There is only one standard and
+specs are <em>always</em> expected to run correctly on the <em>standard</em>. If there is
+version-specific behavior or a bug in the <em>standard</em>, use the
+<code>ruby_version_is</code> or <code>ruby_bug</code> guard instead.</p>
+
+<div class="highlight"><pre><code class="ruby"><span class="lineno">1</span> <span class="n">compliant_on</span> <span class="ss">:jruby</span><span class="p">,</span> <span class="ss">:rubinius</span> <span class="k">do</span>
+<span class="lineno">2</span> <span class="n">not_compliant_on</span> <span class="ss">:rubinius</span> <span class="k">do</span>
+<span class="lineno">3</span>   <span class="n">it</span> <span class="s2">&quot;returns false&quot;</span> <span class="k">do</span>
+<span class="lineno">4</span>   <span class="k">end</span>
+<span class="lineno">5</span> <span class="k">end</span>
+</code></pre>
+</div>
+
+<p>The spec above will run on EVERY implementation except Rubinius. The
+<code>not_compliant_on</code> guard will always run on the <em>standard</em>.</p>
+
+<p>It should be obvious that the <code>compliant_on</code> guard is more convenient when
+the number of implementations that conform to the standard is small compared
+to the total number of implementations. The <code>not_compliant_on</code>
+guard is useful when the number of non-conforming implementations is small.
+Another way to look at this, <code>compliant_on</code> essentially whitelists the
+compliant implementations, while <code>not_compliant_on</code> blacklists the
+non-comforming implementations.</p>
+
+<p>It is reasonable to assume that if there is a <code>not_compliant_on</code>
+guard for a particular implementation, then there is also a <code>deviates_on</code> or
+<code>extended_on</code> guarded spec for the same facet of behavior. This is not
+enforced in any way by the system of guards. It makes sense that if a facet
+of behavior is not consistent with the <em>standard</em>, then that can be
+illustrated by another spec. This is not always the case. For instance, the
+<em>standard</em> may call a particular method on an instance that an alternative
+implementation has no need to call. The alternative implementation may behave
+the same in every aspect except calling the method. In such case, the
+<code>not_compliant_on</code> guard on that one facet of behavior is
+sufficient. It does not enhance the specs to add a <code>deviates_on</code> spec that
+merely creates a mock <code>should_not_receive</code> expectation. This
+obviously is in the gray line between implementation and interface.</p>
+
+<h4 id="notsupportedon">4.2 not_supported_on</h4>
+
+<p>The <code>not_supported_on</code> guard documents that there is no behavior
+like that described in the guarded spec for the listed implementations.</p>
+
+<div class="highlight"><pre><code class="ruby"><span class="lineno">1</span> <span class="n">not_supported_on</span> <span class="ss">:jruby</span> <span class="k">do</span>
+<span class="lineno">2</span>   <span class="n">it</span> <span class="s2">&quot;forks the process&quot;</span> <span class="k">do</span>
+<span class="lineno">3</span>   <span class="k">end</span>
+<span class="lineno">4</span> <span class="k">end</span>
+</code></pre>
+</div>
+
+<p>The above spec will run on EVERY implementation <em>except</em> JRuby. In
+particular, it will always run an the <em>standard</em>. Further, it will raise an
+exception if passed :ruby.</p>
+
+<p>The key difference between <code>not_supported_on</code> and the compliance
+guards above is that <code>not_supported_on</code> offers no alternative to
+the <em>standard</em> behavior.</p>
+
+<h4 id="deviateson">4.3 deviates_on</h4>
+
+<p>If an implementation does not conform to the <em>standard</em> behavior but instead
+offers an alternative behavior, the spec illustrating that is wrapped in a
+<code>deviates_on</code> guard.</p>
+
+<div class="highlight"><pre><code class="ruby"><span class="lineno">1</span> <span class="n">deviates_on</span> <span class="ss">:rubinius</span> <span class="k">do</span>
+<span class="lineno">2</span>   <span class="n">it</span> <span class="s2">&quot;coerces to two Bignums&quot;</span> <span class="k">do</span>
+<span class="lineno">3</span>   <span class="k">end</span>
+<span class="lineno">4</span> <span class="k">end</span>
+</code></pre>
+</div>
+
+<p>The above spec will run ONLY on Rubinius. More than one implementation can be
+listed. This guard will NEVER run on the <em>standard</em> and will raise an
+exception if passed :ruby.</p>
+
+<h4 id="extendedon">4.4 extended_on</h4>
+
+<p>If an implementation offers a behavior that does not exist at all in the
+standard, the spec illustrating that behavior is wrapped in an <code>extended_on</code>
+guard.</p>
+
+<div class="highlight"><pre><code class="ruby"><span class="lineno">1</span> <span class="n">extended_on</span> <span class="ss">:rubinius</span> <span class="k">do</span>
+<span class="lineno">2</span>   <span class="n">it</span> <span class="s2">&quot;returns an immutable vector&quot;</span> <span class="k">do</span>
+<span class="lineno">3</span>   <span class="k">end</span>
+<span class="lineno">4</span> <span class="k">end</span>
+</code></pre>
+</div>
+
+<p>The above spec will run ONLY on Rubinius. More than one implementation can be
+listed. This guard will NEVER run on the <em>standard</em> and will raise an
+exception if passed :ruby.</p>
+
+<h3 id="environments">5. Environments</h3>
+
+<p>The following guards are broadly grouped by their relation to how the specs
+are run. This is referred to as the spec <em>environment</em>. It includes guards
+for which runner (e.g. RSpec or MSpec) is executing the specs, which classes
+  are loaded when the specs run, and whether the process running the specs
+  has superuser privileges.</p>
+
+<ul>
+  <li>runner_is</li>
+  <li>runner_is_not</li>
+  <li>conflicts_with</li>
+  <li>as_superuser</li>
+  <li>quarantine!</li>
+</ul>
+
+<h4 id="runneris--runnerisnot">5.1 runner_is / runner_is_not</h4>
+
+<p>These two guards were initially added to protect specs whose behavior would
+change in the presence of certain standard library classes like Rational.
+This situation has been taken over by the <code>conflicts_with</code> guard below. These
+guards should now only be used if the particular runner framework itself is
+an issue.</p>
+
+<div class="highlight"><pre><code class="ruby"><span class="lineno">1</span> <span class="n">runner_is</span> <span class="ss">:rspec</span> <span class="k">do</span>
+<span class="lineno">2</span>   <span class="n">it</span> <span class="s2">&quot;does something that only runs under RSpec&quot;</span> <span class="k">do</span>
+<span class="lineno">3</span>   <span class="k">end</span>
+<span class="lineno">4</span> <span class="k">end</span>
+<span class="lineno">5</span> 
+<span class="lineno">6</span> <span class="n">runner_is</span> <span class="ss">:mspec</span> <span class="k">do</span>
+<span class="lineno">7</span>   <span class="n">it</span> <span class="s2">&quot;does something that only runs under MSpec&quot;</span> <span class="k">do</span>
+<span class="lineno">8</span>   <span class="k">end</span>
+<span class="lineno">9</span> <span class="k">end</span>
+</code></pre>
+</div>
+
+<h4 id="conflictswith">5.2 conflicts_with</h4>
+
+<p>This guard wraps specs for methods whose behavior may be changed incompatibly
+by certain other classes.</p>
+
+<div class="highlight"><pre><code class="ruby"><span class="lineno">1</span> <span class="n">conflicts_with</span> <span class="ss">:SomeClass</span> <span class="k">do</span>
+<span class="lineno">2</span>   <span class="n">it</span> <span class="s2">&quot;returns an Integer&quot;</span> <span class="k">do</span>
+<span class="lineno">3</span>   <span class="k">end</span>
+<span class="lineno">4</span> <span class="k">end</span>
+</code></pre>
+</div>
+
+<p>The above guard will NOT yield if SomeClass is defined.</p>
+
+<h4 id="assuperuser">5.3 as_superuser</h4>
+
+<p>Some Ruby methods will only behave as expected if the process running the
+code example has superuser privileges.</p>
+
+<div class="highlight"><pre><code class="ruby"><span class="lineno">1</span> <span class="n">as_superuser</span> <span class="k">do</span>
+<span class="lineno">2</span>   <span class="n">describe</span> <span class="s2">&quot;File.chown&quot;</span> <span class="k">do</span>
+<span class="lineno">3</span>   <span class="k">end</span>
+<span class="lineno">4</span> <span class="k">end</span>
+</code></pre>
+</div>
+
+<p>The guard above will only yield if <code>Process.euid == 0</code>.</p>
+
+<h4 id="quarantine">5.4 quarantine!</h4>
+
+<p>The <code>quarantine!</code> guard will never yield to the block, so the
+specs inside the guard will not run. This guard is only used to temporarily
+disable a guard that is causing the <em>standard</em> to fail severely (for example,
+by causing a segfault) AND the correctness of the spec is suspect. The guard
+allows the spec to be investigated but not cause any failures.</p>
+
+<p>If a spec exposes a bug that is causing a segfault, the <code>ruby_bug</code> guard
+should be used.</p>
+
+<div class="highlight"><pre><code class="ruby"><span class="lineno">1</span> <span class="n">quarantine!</span> <span class="k">do</span> 
+<span class="lineno">2</span>   <span class="n">it</span> <span class="s2">&quot;does something that causes a segfault&quot;</span> <span class="k">do</span>
+<span class="lineno">3</span>   <span class="k">end</span>
+<span class="lineno">4</span> <span class="k">end</span>
+</code></pre>
+</div>
+
+
+    </div>
+        <div class='container footer'>
+      <p><a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/"><img
+  alt="Creative Commons License" style="border-width:0"
+  src="http://i.creativecommons.org/l/by-nc-sa/3.0/88x31.png" /></a>
+  rubyspec.org is Copyright &copy; 2011 <a
+    href='http://blog.brightredglow.com'>Brian Ford</a>
+</p>
+
+    </div>
+
+  </body>
+
+</html>

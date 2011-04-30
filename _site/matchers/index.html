@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>RubySpec :
+      The Standard You Trust&#8482;</title>
+    <link href="/stylesheets/application.css" media="screen" rel="stylesheet" type="text/css" />
+    <link href="/stylesheets/pygments.css" media="screen" rel="stylesheet" type="text/css" />
+  </head>
+    <body>
+    <div class='container header'>
+  <h1><a href='/'>RubySpec</a></h1>
+  <p class='tagline'>The standard you trust&#8482;</p>
+</div>
+
+    <div class='container'>
+      <h2 id="matchers">Matchers</h2>
+
+<p>(TODO: Update these with all the current matchers and document them.)</p>
+
+<ul>
+  <li>= = (expected)
+** (1+2).should = = 3
+** [1,2].size.should_not = = 0</li>
+  <li>&lt;(expected)</li>
+  <li>&lt;=(expected)</li>
+  <li>
+    <blockquote>
+      <p>(expected)</p>
+    </blockquote>
+  </li>
+  <li>
+    <blockquote>
+      <p>=(expected)</p>
+    </blockquote>
+  </li>
+  <li>=~(expected)</li>
+  <li>be_ancestor_of(expected)</li>
+  <li>be_close(expected, tolerance)</li>
+  <li>be_empty</li>
+  <li>be_false</li>
+  <li>be_kind_of(expected)</li>
+  <li>be_nil</li>
+  <li>be_true</li>
+  <li>complain(complaint=nil)  #Regexp or String</li>
+  <li>eql(expected)</li>
+  <li>equal(expected)</li>
+  <li>equal_element(element, attributes = nil, content = nil, options = {})</li>
+  <li>equal_utf16(expected)</li>
+  <li>include(*expected)       #Note: not &lsquo;include?&rsquo; but &lsquo;include&rsquo;</li>
+  <li>match_yaml(expected)</li>
+  <li>output(stdout=nil, stderr=nil)</li>
+  <li>output_to_fd(what, where = STDOUT)</li>
+  <li>raise_error(exception=Exception, message=nil, &amp;block)</li>
+</ul>
+
+
+    </div>
+        <div class='container footer'>
+      <p><a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/"><img
+  alt="Creative Commons License" style="border-width:0"
+  src="http://i.creativecommons.org/l/by-nc-sa/3.0/88x31.png" /></a>
+  rubyspec.org is Copyright &copy; 2011 <a
+    href='http://blog.brightredglow.com'>Brian Ford</a>
+</p>
+
+    </div>
+
+  </body>
+
+</html>

@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>RubySpec :
+      The Standard You Trust&#8482;</title>
+    <link href="/stylesheets/application.css" media="screen" rel="stylesheet" type="text/css" />
+    <link href="/stylesheets/pygments.css" media="screen" rel="stylesheet" type="text/css" />
+  </head>
+    <body>
+    <div class='container header'>
+  <h1><a href='/'>RubySpec</a></h1>
+  <p class='tagline'>The standard you trust&#8482;</p>
+</div>
+
+    <div class='container'>
+      <h2 id="configuration">Configuration</h2>
+
+<p>MSpec provides a simple way to specify configuration options for the runner
+scripts by putting them in a file rather than using command line switches.
+The config files are simply Ruby files. There may be zero or more config
+files. The runner scripts attempt to load several config files by default.
+Additional config files can be specified with the <code>-B, --config
+FILE</code> command line option.</p>
+
+<p>The runner scripts attempt to load the following config files in order by
+looking in &lsquo;.&rsquo; and &lsquo;spec&rsquo; directories:</p>
+
+<ol>
+  <li><code>default.mspec</code></li>
+  <li>depending on RUBY_VERSION, either <code>ruby.1.8.mspec</code> or <code>ruby.1.9.mspec</code></li>
+  <li><code>~/.mspecrc</code></li>
+</ol>
+
+<p>Config files loaded later will override settings in config files loaded
+earlier. All the default config files are loaded before command line options
+are processed, so command line options will override config file options.
+Config files loaded with the <code>-B</code> option can override any options
+set before the file is loaded. Command line options are parsed left-to-right.</p>
+
+<p>A config file has the following structure:</p>
+
+<pre><code>
+class MSpecScript
+  # An ordered list of the directories containing specs to run
+  # as the CI process.
+  set :ci_files, [
+    'spec/frozen/1.8/core',
+    'spec/frozen/1.8/language',
+    'spec/core',
+    'spec/compiler',
+    '^spec/compiler/new_compiler_spec.rb',
+
+    # These additional directories will be enabled as the
+    # specs in them are updated for the C++ VM.
+    # 'spec/debugger',
+    # 'spec/subtend',
+    # 'spec/parser',
+  ]
+
+  # The set of substitutions to transform a spec filename
+  # into a tag filename.
+  set :tags_patterns, [
+                        [%r(spec/ruby/), 'spec/frozen/'],
+                        [%r(spec/), 'spec/tags/'],
+                        [/_spec.rb$/, '_tags.txt']
+                      ]
+
+  # The default implementation to run the specs.
+  set :target, 'bin/rbx'
+end
+</code></pre>
+
+<p>The <code>MSpecScript</code> class defines the <code>set</code> class method.
+The config file simply opens the <code>MSpecScript</code> class and sets
+various options. Since the file is simply Ruby code, any valid Ruby code can
+be used.</p>
+
+<h3 id="configuration-options">Configuration Options</h3>
+
+<p>There are a variety of config options. These are listed below with their
+function and default values.</p>
+
+<h4 id="loading-configuration-files">Loading configuration files</h4>
+
+<p><code>:path = [".", "spec"]</code></p>
+
+<p>The directories to search when loading config files.</p>
+
+<p><code>:config_ext = ".mspec"</code></p>
+
+<p>The extension to append to a config file name if the bare name is not found.
+This enables specifying, for example, <code>-B full</code> for loading
+<code>full.mspec</code></p>
+
+<h4 id="invoking-the-runner-scripts">Invoking the runner scripts</h4>
+
+<p>The <code>mspec</code> script does not run the specs directly. Instead, it
+processes options and invokes a runner script. These config options provide
+control over how the runner script is invoked.</p>
+
+<table>
+  <tbody>
+    <tr>
+      <td><code>:target = ENV["RUBY"]</code></td>
+      <td>&nbsp;</td>
+      <td>&ldquo;ruby&rdquo;&lt;/code&gt;</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>The implementation to execute the runner script. Set with the <code>-t,
+--target TARGET</code> option.</p>
+
+<p><code>:flags = []</code></p>
+
+<p>Options to pass to the implementation executing the runner script. Set with
+the <code>-T, --target-opt OPT</code> option. (Compare with
+<code>:options</code> below.)</p>
+
+<p><code>:command = "run"</code></p>
+
+<p>The runner script to invoke, where <code>run</code> runs the specs,
+<code>ci</code> runs the CI set, and <code>tag</code> adds or removes tags.</p>
+
+<p><code>:options = []</code></p>
+
+<p>Options that are passed to the runner script itself. This is used internally
+by the <code>mspec</code> front script.</p>
+
+<p><code>:requires = []</code></p>
+
+<p>Libraries for the implementation executing the runner script to require
+before loading the runner script. Set with the <code>-r, --require
+LIBRARY</code> option.</p>
+
+<p><code>:abort = true</code></p>
+
+<p>When <code>true</code>, registers a signal handler for SIGINT that exits immediately.</p>
+
+<h4 id="selecting-the-tag-set">Selecting the tag set</h4>
+
+<p><code>:tags_patterns = []</code></p>
+
+<p>A set of transformations applied in sequence to transform the name of a spec
+file to the name of the corresponding tag file. (See the config file example
+above.)</p>
+
+<h4 id="selecting-the-set-of-specs-to-run-by-filters">Selecting the set of specs to run by filters</h4>
+
+<p><code>:includes = []</code></p>
+
+<p>The set of strings to match for specs that will be run. Each string is
+converted into an <em>escaped</em> Regexp. Set with the <code>-e, --example
+STR</code> option.</p>
+
+<p><code>:excludes = []</code></p>
+
+<p>The set of strings to match for specs that will NOT be run. Set with the
+<code>-E, --exclude STR</code> option.</p>
+
+<p><code>:patterns = []</code></p>
+
+<p>The set of patterns to match for specs that will be run. Each pattern is
+converted into an <em>unescaped</em> Regexp so valid Regexp characters are accepted.
+Set with the <code>-p, --pattern PATTERN</code> option.</p>
+
+<p><code>:xpatterns = []</code></p>
+
+<p>The set of patterns to match for specs that will NOT be run. Set with the
+<code>-P, --excl-pattern PATTERN</code> option.</p>
+
+<p><code>:tags = []</code></p>
+
+<p>The set of tags to match for specs that will be run. Set with the <code>-g,
+--tag TAG</code> option.</p>
+
+<p><code>:xtags = []</code></p>
+
+<p>The set of tags to match for specs that will NOT be run. Set with the
+<code>-G, --excl-tag TAG</code> option.</p>
+
+<p><code>:profiles = []</code></p>
+
+<p>Profiles are YAML files that specify sets of methods for which to run specs.</p>
+
+<p>An example profile for the <code>Mutex</code> class follows:</p>
+
+<pre>
+Mutex#:
+- lock
+- locked?
+- synchronize
+- unlock
+Mutex_m.:
+- define_aliases
+- extend_object
+Mutex_m#:
+- mu_extended
+- mu_initialize
+</pre>
+
+<p>This config item is the set of profiles for specs that will be run. Set with
+the <code>-w, --profile FILE</code> option.</p>
+
+<p><code>:xprofiles = []</code></p>
+
+<p>The set of profiles for specs that will NOT be run. Set with the <code>-W,
+--excl-profile FILE</code> option.</p>
+
+<h4 id="selecting-the-set-of-specs-to-run-by-explicit-lists-of-files">Selecting the set of specs to run by explicit lists of files</h4>
+
+<p><code>:files = []</code></p>
+
+<p>Specifies a list of files for <code>mspec-run</code> to process if no files
+are given on the command line.</p>
+
+<p>The entries in the list may be:</p>
+
+<ol>
+  <li>a simple file name</li>
+  <li>a directory name, in which case the directory is recursively searched for spec files (i.e. dir/<em>*/</em>_spec.rb)</li>
+  <li>a glob pattern understood by <code>Dir[]</code>.</li>
+</ol>
+
+<p>Entries can be omitted from the list by putting &lsquo;^&rsquo; as the first character.
+The entries are processed in order, so an exclude entry (one with &lsquo;^&rsquo;) will
+only remove items from the list if they are already in the list. Note that
+the exclusion facility works in the mspec runners for paths and files
+specified on the command line as well.</p>
+
+<p><code>:ci_files = []</code></p>
+
+<p>Specifies a list of files for <code>mspec-ci</code> no process if no files
+are given on the command line. Follows the same rules as <code>:files</code>
+above.</p>
+
+<h4 id="formatting-runner-results">Formatting runner results</h4>
+
+<p><code>:formatter = nil</code></p>
+
+<p>The method of displaying the results of running the specs. When
+<code>nil</code>, the DottedFormatter is used if the number of files to run
+is less than 50. Otherwise, the FileFormatter is used. Set to
+<code>false</code> to not use any formatter. This is used internally, for
+example, by <code>mspec-tag</code> to list specs that have been tagged. Set
+with the <code>-f, --format FORMAT</code> option.</p>
+
+<h4 id="tagging-specs">Tagging specs</h4>
+
+<p>The <code>mspec-tag</code> adds or removes tags for specs.</p>
+
+<p><code>:tagger = :add</code></p>
+
+<p>The default action is to add tags. The action is set with the <code>-N, --add
+TAG</code> and <code>-R, --del TAG</code> options.</p>
+
+<p><code>:tag = "fails"</code></p>
+
+<p>The default tag to add. Set with the <code>TAG</code> argument to the
+<code>--add</code> or <code>--del</code> options.</p>
+
+<p><code>:outcome = :fail</code></p>
+
+<p>The result of running a spec that triggers the specified tag action. The
+default is when the spec fails. Set with the <code>-Q, --pass</code>,
+<code>-F, --fail</code>, and <code>-L, --all</code> options.</p>
+
+<p><code>:ltags = []</code></p>
+
+<p>The set of tags for which to list tagged specs. Set with the <code>--list TAG</code> option.</p>
+
+<h4 id="triggering-actions">Triggering actions</h4>
+
+<p>While the specs are being run, certain actions can be invoked when a matching
+spec is encountered. (See e.g. the <code>--spec-debug</code> and
+<code>--spec-gdb</code> options for <code>mspec-run</code>.)</p>
+
+<p><code>:atags = []</code></p>
+
+<p>The set of tags for which to invoke the specified action. Set with the
+<code>-K, --action-tag TAG</code> option.</p>
+
+<p><code>:astrings = []</code></p>
+
+<p>The set of strings for matching specs for which to invoke the specified
+action. Set with the <code>-S, --action-string STR</code> option.</p>
+
+
+    </div>
+        <div class='container footer'>
+      <p><a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/"><img
+  alt="Creative Commons License" style="border-width:0"
+  src="http://i.creativecommons.org/l/by-nc-sa/3.0/88x31.png" /></a>
+  rubyspec.org is Copyright &copy; 2011 <a
+    href='http://blog.brightredglow.com'>Brian Ford</a>
+</p>
+
+    </div>
+
+  </body>
+
+</html>
