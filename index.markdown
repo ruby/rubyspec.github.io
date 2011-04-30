@@ -29,7 +29,7 @@ File issues at [https://github.com/rubyspec/rubyspec/issues/
 * [Configuration](/configuration/)
 
 
-## 1.9 Issues
+## Challenges
 
 * [Ruby 1.9 Issues](/ruby-1.9-issues/)
 * [Bugs Found While Writing Specs](/bugs_found/)
