@@ -206,7 +206,7 @@ methods, so the specs should be exactly the same for each aliased method. The
 following illustrates the convention for specs for aliased methods (or just
 otherwise identical interfaces.)
 
-In `rubyspec/1.8/core/array/shared/collect.rb`
+In `rubyspec/core/array/shared/collect.rb`
 
 {% highlight ruby linenos %}
     describe :array_collect, :shared => true do
@@ -223,7 +223,7 @@ In `rubyspec/1.8/core/array/shared/collect.rb`
     end
 {% endhighlight %}
 
-In `rubyspec/1.8/core/array/collect_spec.rb`
+In `rubyspec/core/array/collect_spec.rb`
 
 {% highlight ruby linenos %}
 require File.dirname(__FILE__) + '/../../spec_helper'
@@ -234,7 +234,7 @@ describe "Array#collect" do
 end
 {% endhighlight %}
 
-In `rubyspec/1.8/core/array/map_spec.rb`
+In `rubyspec/core/array/map_spec.rb`
 
 {% highlight ruby linenos %}
 require File.dirname(__FILE__) + '/../../spec_helper'
