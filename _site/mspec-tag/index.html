@@ -35,15 +35,15 @@ with the tag &lsquo;fails&rsquo;. Since <code>--add fails</code> is the default 
 following commands are equivalent:</p>
 
 <pre>
-bin/mspec tag spec/ruby/1.8/core/array/append_spec.rb
-bin/mspec tag --add fails spec/ruby/1.8/core/array/append_spec.rb
+bin/mspec tag spec/ruby/core/array/append_spec.rb
+bin/mspec tag --add fails spec/ruby/core/array/append_spec.rb
 </pre>
 
 <p>To remove tags for specs that now pass, use the following command. Since <code>--pass</code> is the default outcome, the following commands are also equivalent:</p>
 
 <pre>
-bin/mspec tag --del fails spec/ruby/1.8/core/array/append_spec.rb
-bin/mspec tag --del fails --pass spec/ruby/1.8/core/array/append_spec.rb
+bin/mspec tag --del fails spec/ruby/core/array/append_spec.rb
+bin/mspec tag --del fails --pass spec/ruby/core/array/append_spec.rb
 </pre>
 
 <p>Detailed help output is available for the command.</p>

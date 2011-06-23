@@ -218,7 +218,7 @@ methods, so the specs should be exactly the same for each aliased method. The
 following illustrates the convention for specs for aliased methods (or just
 otherwise identical interfaces.)</p>
 
-<p>In <code>rubyspec/1.8/core/array/shared/collect.rb</code></p>
+<p>In <code>rubyspec/core/array/shared/collect.rb</code></p>
 
 <div class="highlight"><pre><code class="ruby"><span class="lineno"> 1</span>     <span class="n">describe</span> <span class="ss">:array_collect</span><span class="p">,</span> <span class="ss">:shared</span> <span class="o">=&gt;</span> <span class="kp">true</span> <span class="k">do</span>
 <span class="lineno"> 2</span>       <span class="n">it</span> <span class="s2">&quot;returns a copy of array with each element replaced by the value returned by block&quot;</span> <span class="k">do</span>
@@ -235,7 +235,7 @@ otherwise identical interfaces.)</p>
 </code></pre>
 </div>
 
-<p>In <code>rubyspec/1.8/core/array/collect_spec.rb</code></p>
+<p>In <code>rubyspec/core/array/collect_spec.rb</code></p>
 
 <div class="highlight"><pre><code class="ruby"><span class="lineno">1</span> <span class="nb">require</span> <span class="no">File</span><span class="o">.</span><span class="n">dirname</span><span class="p">(</span><span class="bp">__FILE__</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39;/../../spec_helper&#39;</span>
 <span class="lineno">2</span> <span class="nb">require</span> <span class="no">File</span><span class="o">.</span><span class="n">dirname</span><span class="p">(</span><span class="bp">__FILE__</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39;/shared/collect.rb&#39;</span>
@@ -246,7 +246,7 @@ otherwise identical interfaces.)</p>
 </code></pre>
 </div>
 
-<p>In <code>rubyspec/1.8/core/array/map_spec.rb</code></p>
+<p>In <code>rubyspec/core/array/map_spec.rb</code></p>
 
 <div class="highlight"><pre><code class="ruby"><span class="lineno">1</span> <span class="nb">require</span> <span class="no">File</span><span class="o">.</span><span class="n">dirname</span><span class="p">(</span><span class="bp">__FILE__</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39;/../../spec_helper&#39;</span>
 <span class="lineno">2</span> <span class="nb">require</span> <span class="no">File</span><span class="o">.</span><span class="n">dirname</span><span class="p">(</span><span class="bp">__FILE__</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39;/shared/collect.rb&#39;</span>

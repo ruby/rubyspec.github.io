@@ -45,8 +45,8 @@ class MSpecScript
   # An ordered list of the directories containing specs to run
   # as the CI process.
   set :ci_files, [
-    'spec/frozen/1.8/core',
-    'spec/frozen/1.8/language',
+    'spec/ruby/core',
+    'spec/ruby/language',
     'spec/core',
     'spec/compiler',
     '^spec/compiler/new_compiler_spec.rb',
@@ -102,9 +102,7 @@ control over how the runner script is invoked.</p>
 <table>
   <tbody>
     <tr>
-      <td><code>:target = ENV["RUBY"]</code></td>
-      <td>&nbsp;</td>
-      <td>&ldquo;ruby&rdquo;&lt;/code&gt;</td>
+      <td><code>:target = ENV["RUBY"] || "ruby"</code></td>
     </tr>
   </tbody>
 </table>
