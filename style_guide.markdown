@@ -101,7 +101,7 @@ just different specific data-points. Breaking this up into individual
 examples would obscure the larger picture, ie. the "table".
 
 {% highlight ruby linenos %}
-it 'supports escape characters' do
+it "supports escape characters" do
   /\t/.match("\t").to_a.should == ["\t"] # horizontal tab
   /\v/.match("\v").to_a.should == ["\v"] # vertical tab
   /\n/.match("\n").to_a.should == ["\n"] # newline
