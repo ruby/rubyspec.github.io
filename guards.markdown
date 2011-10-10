@@ -154,7 +154,7 @@ either "darwin" OR "BSD". If <code>Config::CONFIG['host_os']</code> is not
 set in rbconfig, the :os parameters will be matched against RUBY_PLATFORM
 instead.
 
-h3. 3. Bugs
+### 3. Bugs
 
 Sometimes a bug is discovered in the _standard_. In this case, we do two things:
 
