@@ -4,7 +4,7 @@ layout: page
 
 # Creating files with mkspec
 
- The [general organization](/wiki/rubyspec/Organization) of the specs is one directory per class/module, one subdirectory per sub-class/module, and one file per method name. For example, for the Kernel module, there is the `rubyspec/core/kernel` directory, and there is the `gsub_spec.rb` that contains specs for Kernel#gsub and Kernel.gsub (i.e. instance method and module method).
+ The [general organization](/organization/) of the specs is one directory per class/module, one subdirectory per sub-class/module, and one file per method name. For example, for the Kernel module, there is the `rubyspec/core/kernel` directory, and there is the `gsub_spec.rb` that contains specs for Kernel#gsub and Kernel.gsub (i.e. instance method and module method).
 
  The `mkspec` script can be used to create the skeleton files for all the methods of a class or module. The script will create the directory and file if they do not exist. If the file exists, it will be executed by `mspec-run` with the `--dry-run` option, essentially parsing the specs to check if there is a spec for the method. If not, a signpost spec like the following is inserted into the file.
 
