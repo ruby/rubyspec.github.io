@@ -46,7 +46,7 @@ mspec [COMMAND] [options] (FILE|DIRECTORY|GLOB)+
 
 <code>-B, --config FILE</code>
 
-Load FILE containing configuration options. Refer to the "configuration":/wiki/mspec/Configuration document.
+Load FILE containing configuration options. Refer to the [configuration](/configuration/) document.
 
 <code>-t, --target TARGET</code>
 
