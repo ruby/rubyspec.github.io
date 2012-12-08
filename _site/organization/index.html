@@ -6,6 +6,8 @@
     <meta content='text/html;charset=utf-8' http-equiv='content-type'>
     <link href="/stylesheets/application.css" media="screen" rel="stylesheet" type="text/css" />
     <link href="/stylesheets/pygments.css" media="screen" rel="stylesheet" type="text/css" />
+    <script type="text/javascript" src="//use.typekit.net/swa1krd.js"></script>
+    <script type="text/javascript">try{Typekit.load();}catch(e){}</script>
   </head>
     <body>
     <div class='container header'>
@@ -68,9 +70,9 @@ a partial graphic of the directory tree.</p>
 are numerous possible ways of categorizing the entities and concepts that
 make up a programming language. Ruby has a fairly large number of reserved
 words. These words significantly describe major elements of the language,
-including flow control constructs like &ldquo;for&rdquo; and &ldquo;while&rdquo;, conditional
-execution like &ldquo;if&rdquo; and &ldquo;unless&rdquo;, exceptional execution control like
-&ldquo;rescue&rdquo;, etc. There are also literals for the basic &ldquo;types&rdquo; like String,
+including flow control constructs like “for” and “while”, conditional
+execution like “if” and “unless”, exceptional execution control like
+“rescue”, etc. There are also literals for the basic “types” like String,
 Regexp, Array and Fixnum.</p>
 
 <p>Behavioral specifications describe the behavior of concrete entities. Rather
@@ -87,7 +89,7 @@ objects (<code>predefined_spec.rb</code>), the precedence of all operators
 (<code>variables_spec.rb</code>), the behavior of subprocess execution
 (<code>execution_spec.rb</code>), the behavior of the raise method as it impacts the
 execution of a Ruby program (<code>raise_spec.rb</code>), and the block entities like
-&ldquo;begin&rdquo;, &ldquo;do&rdquo;, &ldquo;{ &hellip; }&rdquo; (<code>block_spec.rb</code>).</p>
+“begin”, “do”, “{ … }” (<code>block_spec.rb</code>).</p>
 
 <p>Several reserved words and other entities are combined with the primary
 reserved word or entity to which they are related:</p>
@@ -110,7 +112,7 @@ library. For example, specs for the Array class are in the <code>array</code> di
 <p>Within each subdirectory of <code>core</code>, the specs for each method of that class
 are placed in a separate file. For example, specs for Array#compact are
 places in <code>spec/core/array/compact_spec.rb</code>. Method names with characters
-like &ldquo;?&rdquo;, &ldquo;=&rdquo;, and &ldquo;!&rdquo; are in files named by stripping those characters. For
+like “?”, “=”, and “!” are in files named by stripping those characters. For
 example, specs for Array#compact! are in the same file as specs for
 Array#compact. All the spec files that are needed have already likely been
 created. (See the documentation for <a href="/mkspec/">mkspec</a> for details.)</p>
@@ -124,11 +126,14 @@ as well.</p>
 
     </div>
         <div class='container footer'>
-      <p><a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/"><img
+      <p>
+  rubyspec.org is Copyright &copy; 2011-12 <a
+    href='http://blog.brightredglow.com'>Brian Ford</a>
+</p>
+<p>
+  <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/"><img
   alt="Creative Commons License" style="border-width:0"
   src="http://i.creativecommons.org/l/by-nc-sa/3.0/88x31.png" /></a>
-  rubyspec.org is Copyright &copy; 2011 <a
-    href='http://blog.brightredglow.com'>Brian Ford</a>
 </p>
 
     </div>

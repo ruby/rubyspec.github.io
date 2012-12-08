@@ -6,6 +6,8 @@
     <meta content='text/html;charset=utf-8' http-equiv='content-type'>
     <link href="/stylesheets/application.css" media="screen" rel="stylesheet" type="text/css" />
     <link href="/stylesheets/pygments.css" media="screen" rel="stylesheet" type="text/css" />
+    <script type="text/javascript" src="//use.typekit.net/swa1krd.js"></script>
+    <script type="text/javascript">try{Typekit.load();}catch(e){}</script>
   </head>
     <body>
     <div class='container header'>
@@ -27,7 +29,7 @@
 
 <p>MSpec provides a special runner script that will read the tags and NOT run specs that fail. You can also exclude tagged specs with the default runner script.</p>
 
-<p>Specs are tagged with &lsquo;fails&rsquo; and &lsquo;critical&rsquo;. Specs tagged as critical are specs that either cause hangs or segfaults.</p>
+<p>Specs are tagged with ‘fails’ and ‘critical’. Specs tagged as critical are specs that either cause hangs or segfaults.</p>
 
 <p>To run all the specs but exclude failing ones:</p>
 
@@ -74,23 +76,11 @@ $ mspec tag --del fails core/array/append_spec.rb
 <h3 id="stable-version-of-19">Stable version of 1.9</h3>
 
 <p>RubySpec does not attempt to spec any version of 1.9 prior to the 1.9.2p0
-stable release. In <code>ruby_version_is</code> guards, use &ldquo;1.9&rdquo; if the behavior is 1.9
+stable release. In <code>ruby_version_is</code> guards, use “1.9” if the behavior is 1.9
 specific and has not changed in the stable release of 1.9.2. If 1.9.3 behavior
 differs from 1.9.2 stable, then use the appropriate versions in the guards.</p>
 
-<div class="highlight"><pre><code class="ruby"><span class="lineno"> 1</span> <span class="n">ruby_version_is</span> <span class="s2">&quot;&quot;</span> <span class="o">.</span><span class="n">.</span><span class="o">.</span> <span class="s2">&quot;1.9&quot;</span> <span class="k">do</span>
-<span class="lineno"> 2</span>   <span class="n">it</span> <span class="s2">&quot;does something on versions prior to 1.9&quot;</span> <span class="k">do</span>
-<span class="lineno"> 3</span>     <span class="c1"># ...</span>
-<span class="lineno"> 4</span>   <span class="k">end</span>
-<span class="lineno"> 5</span> <span class="k">end</span>
-<span class="lineno"> 6</span> 
-<span class="lineno"> 7</span> <span class="n">ruby_version_is</span> <span class="s2">&quot;1.9&quot;</span> <span class="k">do</span>
-<span class="lineno"> 8</span>   <span class="n">it</span> <span class="s2">&quot;does something on 1.9&quot;</span> <span class="k">do</span>
-<span class="lineno"> 9</span>     <span class="c1"># ...</span>
-<span class="lineno">10</span>   <span class="k">end</span>
-<span class="lineno">11</span> <span class="k">end</span>
-</code></pre>
-</div>
+<p>Liquid error: No such file or directory - posix_spawnp</p>
 
 <h3 id="using-rubybug-guards-for-19">Using ruby_bug guards for 1.9</h3>
 
@@ -101,11 +91,14 @@ differs from 1.9.2 stable, then use the appropriate versions in the guards.</p>
 
     </div>
         <div class='container footer'>
-      <p><a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/"><img
+      <p>
+  rubyspec.org is Copyright &copy; 2011-12 <a
+    href='http://blog.brightredglow.com'>Brian Ford</a>
+</p>
+<p>
+  <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/"><img
   alt="Creative Commons License" style="border-width:0"
   src="http://i.creativecommons.org/l/by-nc-sa/3.0/88x31.png" /></a>
-  rubyspec.org is Copyright &copy; 2011 <a
-    href='http://blog.brightredglow.com'>Brian Ford</a>
 </p>
 
     </div>
