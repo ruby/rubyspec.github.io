@@ -80,7 +80,19 @@ stable release. In <code>ruby_version_is</code> guards, use “1.9” if the beh
 specific and has not changed in the stable release of 1.9.2. If 1.9.3 behavior
 differs from 1.9.2 stable, then use the appropriate versions in the guards.</p>
 
-<p>Liquid error: No such file or directory - posix_spawnp</p>
+<div class="highlight"><pre><code class="ruby"><span class="lineno"> 1</span> <span class="n">ruby_version_is</span> <span class="s2">&quot;&quot;</span> <span class="o">.</span><span class="n">.</span><span class="o">.</span> <span class="s2">&quot;1.9&quot;</span> <span class="k">do</span>
+<span class="lineno"> 2</span>   <span class="n">it</span> <span class="s2">&quot;does something on versions prior to 1.9&quot;</span> <span class="k">do</span>
+<span class="lineno"> 3</span>     <span class="c1"># ...</span>
+<span class="lineno"> 4</span>   <span class="k">end</span>
+<span class="lineno"> 5</span> <span class="k">end</span>
+<span class="lineno"> 6</span> 
+<span class="lineno"> 7</span> <span class="n">ruby_version_is</span> <span class="s2">&quot;1.9&quot;</span> <span class="k">do</span>
+<span class="lineno"> 8</span>   <span class="n">it</span> <span class="s2">&quot;does something on 1.9&quot;</span> <span class="k">do</span>
+<span class="lineno"> 9</span>     <span class="c1"># ...</span>
+<span class="lineno">10</span>   <span class="k">end</span>
+<span class="lineno">11</span> <span class="k">end</span>
+</code></pre>
+</div>
 
 <h3 id="using-rubybug-guards-for-19">Using ruby_bug guards for 1.9</h3>
 
@@ -93,7 +105,7 @@ differs from 1.9.2 stable, then use the appropriate versions in the guards.</p>
         <div class='container footer'>
       <p>
   rubyspec.org is Copyright &copy; 2011-12 <a
-    href='http://blog.brightredglow.com'>Brian Ford</a>
+    href='http://brixen.io'>Brian Ford</a>
 </p>
 <p>
   <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/"><img

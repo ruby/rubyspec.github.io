@@ -25,7 +25,9 @@ the @versions@ subdirectory. For example, suppose language/method_spec.rb
 contains specs whose syntax depends on the Ruby version. In the
 language/method_spec.rb use the helper as follows:</p>
 
-<p>Liquid error: No such file or directory - posix_spawnp</p>
+<div class="highlight"><pre><code class="ruby">  <span class="n">language_version</span> <span class="bp">__FILE__</span><span class="p">,</span> <span class="s2">&quot;method&quot;</span>
+</code></pre>
+</div>
 
 <p>Then add a file “language/versions/method_1.8.rb” for the specs that are
 syntax-compatible with Ruby 1.8.x.</p>
@@ -35,7 +37,7 @@ syntax-compatible with Ruby 1.8.x.</p>
         <div class='container footer'>
       <p>
   rubyspec.org is Copyright &copy; 2011-12 <a
-    href='http://blog.brightredglow.com'>Brian Ford</a>
+    href='http://brixen.io'>Brian Ford</a>
 </p>
 <p>
   <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/"><img
