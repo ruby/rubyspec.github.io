@@ -177,7 +177,7 @@ end
 
 The vast majority of the spec files for the core library have already been
 created. To create template files for the standard library classes, refer to
-the "mkspec":/wiki/mspec/Mkspec documentation.
+the [mkspec](/mkspec/) documentation.
 
 #### 1.1 Utility Classes
 

@@ -67,7 +67,7 @@ $ mspec core/array/append_spec.rb
 </pre>
 
 The `ruby.1.8.mspec` and `ruby.1.9.mspec` config files also provide
-psuedo-directories that will include all the appropriate files for the
+pseudo-directories that will include all the appropriate files for the
 version.
 
 <pre>
@@ -76,7 +76,7 @@ $ mspec :library
 $ mspec :language
 </pre>
 
-The psuedo-directory for `:library` is the most useful since there are both
+The pseudo-directory for `:library` is the most useful since there are both
 1.8 and 1.9 specific libraries in the `rubyspec/library` directory.
 
 ### Runner script help
