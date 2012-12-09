@@ -56,12 +56,18 @@ div.highlight {
 
 pre {
   font-family: monospace;
-  font-size: 20px;
-  line-height: 30px;
+  font-size: 14px;
+  line-height: 18px;
   border-left: 3px solid #777;
   background: #ddd;
   padding-left: 20px;
   margin: 0 0 27px 0;
+  width: 640px;
+  overflow: auto;
+}
+code {
+  background: #ddd;
+  padding: 2px;
 }
 .highlight pre {
   margin: 0 0;
