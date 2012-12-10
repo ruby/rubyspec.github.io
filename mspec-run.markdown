@@ -87,6 +87,7 @@ mspec run [options] (FILE|DIRECTORY|GLOB)+
 Selects the reporter format to output specs strings and failures. The specdoc formatter is very similar to RSpec's <code>-f s</code> option. The dotted formatter outputs the familiar <code>'....F..EF..''</code> with exceptions listed after all specs are run. The summary formatter only outputs the elapsed time and the tallies for files, examples, failures, and errors. The spinner formatter shows a progress bar. The YAML formatter is useful for automated processing.
 
 <code>-e, --example STRING|FILE</code>
+
 Executes only the specs whose description string matches STRING.
 
 <code>-E, --exclude STRING|FILE</code>
