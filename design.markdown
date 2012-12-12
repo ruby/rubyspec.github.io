@@ -4,7 +4,7 @@ layout: page
 
 # A Ruby Design Process
 
-RubyConf 2012, Brian Ford presented a talk:
+At RubyConf 2012, Brian Ford presented a talk:
 
 [Toward a Design for
 Ruby](http://www.confreaks.com/videos/1278-rubyconf2012-toward-a-design-for-ruby)
