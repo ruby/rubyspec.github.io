@@ -4,14 +4,29 @@ layout: page
 
 # A Ruby Design Process
 
-At RubyConf 2012, Brian Ford presented a talk:
+Ruby is a complex, mature programming language supported on numerous operating
+systems (e.g. Unix, Linux, Windows, etc.) and on diverse platforms (e.g. JVM,
+CLR, Smalltalk, etc.).
 
-[Toward a Design for
-Ruby](http://www.confreaks.com/videos/1278-rubyconf2012-toward-a-design-for-ruby)
+The Ruby programming language boasts at least six significant, full-featured
+implementations, including [MRI](http://ruby-lang.org),
+[JRuby](http://jruby.org/), [Rubinius](http://rubini.us/),
+[IronRuby](http://ironruby.net/), [MacRuby](http://macruby.org/), and
+[MagLev](http://maglev.github.com/). There are also several special-purpose
+derivatives of Ruby, include [mruby](https://github.com/mruby/mruby),
+[RubyMotion](http://www.rubymotion.com/), and
+[MobiRuby](http://mobiruby.org/).
 
-The proposed process has been detailed in a blog post:
+_Ruby has no formal design process, despite Ruby being an industrial strength
+programming language, having hundreds of millions of dollars invested in
+businesses built around the language. There is no process to maintain unity of
+the Ruby language. There is no definitive resource defining Ruby.  Developers
+can only support multiple Ruby implementations with trial and error._
 
-[A Ruby Design Process](http://brixen.io/2012/12/11/a-ruby-design-process).
+At RubyConf 2012, Brian Ford [presented a
+talk](http://www.confreaks.com/videos/1278-rubyconf2012-toward-a-design-for-ruby)
+advocating a Ruby design process. The proposed process has been [detailed in a
+blog post](http://brixen.io/2012/12/11/a-ruby-design-process).
 
 The Ruby design process is summarized below. Please see the blog post for
 elaboration and clarification.
