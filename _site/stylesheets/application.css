@@ -101,3 +101,26 @@ code {
   margin-top: 2em;
   border-top: 1px solid #aaa;
 }
+.errors li {
+  line-height: 24px;
+  list-style-type: none;
+}
+.signatures {
+  padding-left: 160px;
+}
+iframe {
+  width: 300px;
+  height: 120px;
+}
+input.error::-webkit-input-placeholder {
+    color: red;
+}
+input.error:-moz-placeholder {
+    color: red;
+}
+input.error:-ms-input-placeholder {
+    color: red;
+}
+input.error {
+    border: 1px solid red;
+}

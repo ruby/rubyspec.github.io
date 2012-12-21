@@ -46,4 +46,7 @@ elaboration and clarification.
    one vote. Only changes that receive approval from all Council members
    become the definition of Ruby.
 
-
+<div class="signatures">
+  <h1>Sign Here</h1>
+  <iframe src="//signatures.rubyspec.org" frameborder="0" scrolling="no"></iframe>
+</div>
