@@ -159,9 +159,9 @@ instead.
 Sometimes a bug is discovered in the _standard_. In this case, we do two things:
 
 1. File a ticket on the "bug tracker":http://redmine.ruby-lang.org/ to find
-1. out if the suspected behavior is actually considered a bug.
+   out if the suspected behavior is actually considered a bug.
 1. Add a `ruby_bug` guard that wraps the spec showing what is considered to be
-1. the _correct_ behavior.
+   the _correct_ behavior.
 
 {% highlight ruby linenos %}
 ruby_bug "#5555", "1.8.6.114" do
