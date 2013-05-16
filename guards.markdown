@@ -245,7 +245,6 @@ version-specific behavior or a bug in the _standard_, use the
 <code>ruby_version_is</code> or `ruby_bug` guard instead.
 
 {% highlight ruby linenos %}
-compliant_on :jruby, :rubinius do
 not_compliant_on :rubinius do
   it "returns false" do
   end
