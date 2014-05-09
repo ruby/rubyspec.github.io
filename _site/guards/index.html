@@ -91,9 +91,7 @@ the guard may include or exclude the ending version.</p>
 <span class="lineno">14</span> <span class="n">ruby_version_is</span> <span class="s2">&quot;&quot;</span> <span class="o">.</span><span class="n">.</span><span class="o">.</span> <span class="s2">&quot;1.9&quot;</span> <span class="k">do</span>
 <span class="lineno">15</span>   <span class="n">it</span> <span class="s2">&quot;returns false&quot;</span> <span class="k">do</span>
 <span class="lineno">16</span>   <span class="k">end</span>
-<span class="lineno">17</span> <span class="k">end</span>
-</code></pre>
-</div>
+<span class="lineno">17</span> <span class="k">end</span></code></pre></div>
 
 <p>The <code>ruby_version_is</code> guard takes one argument that may be a
 string or a range of two strings. The format of the string is A.B.C.D, where:</p>
@@ -133,18 +131,14 @@ complex. As their names suggest, they are inverses.</p>
 <div class="highlight"><pre><code class="ruby"><span class="lineno">1</span> <span class="n">platform_is</span> <span class="ss">:linux</span><span class="p">,</span> <span class="ss">:bsd</span> <span class="k">do</span>
 <span class="lineno">2</span>   <span class="n">it</span> <span class="s2">&quot;opens the file&quot;</span> <span class="k">do</span>
 <span class="lineno">3</span>   <span class="k">end</span>
-<span class="lineno">4</span> <span class="k">end</span>
-</code></pre>
-</div>
+<span class="lineno">4</span> <span class="k">end</span></code></pre></div>
 
 <p>The guard above will yield if RUBY_PLATFORM matches either “linux” OR “bsd”.</p>
 
 <div class="highlight"><pre><code class="ruby"><span class="lineno">1</span> <span class="n">platform_is</span> <span class="ss">:linux</span><span class="p">,</span> <span class="ss">:wordsize</span> <span class="o">=&gt;</span> <span class="mi">32</span> <span class="k">do</span>
 <span class="lineno">2</span>   <span class="n">it</span> <span class="s2">&quot;opens the file&quot;</span> <span class="k">do</span>
 <span class="lineno">3</span>   <span class="k">end</span>
-<span class="lineno">4</span> <span class="k">end</span>
-</code></pre>
-</div>
+<span class="lineno">4</span> <span class="k">end</span></code></pre></div>
 
 <p>The guard above will yield if RUBY_PLATFORM matches “linux” AND the processor
 word size is 32-bit.</p>
@@ -152,9 +146,7 @@ word size is 32-bit.</p>
 <div class="highlight"><pre><code class="ruby"><span class="lineno">1</span> <span class="n">platform_is_not</span> <span class="ss">:windows</span><span class="p">,</span> <span class="ss">:wordsize</span> <span class="o">=&gt;</span> <span class="mi">32</span> <span class="k">do</span>
 <span class="lineno">2</span>   <span class="n">it</span> <span class="s2">&quot;opens the file&quot;</span> <span class="k">do</span>
 <span class="lineno">3</span>   <span class="k">end</span>
-<span class="lineno">4</span> <span class="k">end</span>
-</code></pre>
-</div>
+<span class="lineno">4</span> <span class="k">end</span></code></pre></div>
 
 <p>The guard above will yield if RUBY_PLATFORM does not matches “windows” AND
 the processor word size is not 32-bit.</p>
@@ -165,9 +157,7 @@ For details, refer to the MSpec source.</p>
 <div class="highlight"><pre><code class="ruby"><span class="lineno">1</span> <span class="n">platform_is</span> <span class="ss">:os</span> <span class="o">=&gt;</span> <span class="o">[</span><span class="ss">:darwin</span><span class="p">,</span> <span class="ss">:bsd</span><span class="o">]</span> <span class="k">do</span>
 <span class="lineno">2</span>   <span class="n">it</span> <span class="s2">&quot;opens the file&quot;</span> <span class="k">do</span>
 <span class="lineno">3</span>   <span class="k">end</span>
-<span class="lineno">4</span> <span class="k">end</span>
-</code></pre>
-</div>
+<span class="lineno">4</span> <span class="k">end</span></code></pre></div>
 
 <p>The guard above will yield if <code>Config::CONFIG['host_os']</code> matches
 either “darwin” OR “BSD”. If <code>Config::CONFIG['host_os']</code> is not
@@ -179,19 +169,17 @@ instead.</p>
 <p>Sometimes a bug is discovered in the <em>standard</em>. In this case, we do two things:</p>
 
 <ol>
-  <li>File a ticket on the “bug tracker”:http://redmine.ruby-lang.org/ to find</li>
-  <li>out if the suspected behavior is actually considered a bug.</li>
-  <li>Add a <code>ruby_bug</code> guard that wraps the spec showing what is considered to be</li>
-  <li>the <em>correct</em> behavior.</li>
+  <li>File a ticket on the “bug tracker”:http://redmine.ruby-lang.org/ to find
+out if the suspected behavior is actually considered a bug.</li>
+  <li>Add a <code>ruby_bug</code> guard that wraps the spec showing what is considered to be
+the <em>correct</em> behavior.</li>
 </ol>
 
 <div class="highlight"><pre><code class="ruby"><span class="lineno">1</span> <span class="n">ruby_bug</span> <span class="s2">&quot;#5555&quot;</span><span class="p">,</span> <span class="s2">&quot;1.8.6.114&quot;</span> <span class="k">do</span>
 <span class="lineno">2</span>   <span class="n">it</span> <span class="s2">&quot;returns the sum&quot;</span> <span class="k">do</span>
 <span class="lineno">3</span>     <span class="p">(</span><span class="mi">1</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">should</span> <span class="o">==</span> <span class="mi">2</span>
 <span class="lineno">4</span>   <span class="k">end</span>
-<span class="lineno">5</span> <span class="k">end</span>
-</code></pre>
-</div>
+<span class="lineno">5</span> <span class="k">end</span></code></pre></div>
 
 <p>The above guard will NOT yield to the block on any version of the <em>standard</em>
 less than or equal to 1.8.6 patchlevel 114.</p>
@@ -251,9 +239,7 @@ implementations or platforms.</p>
 <div class="highlight"><pre><code class="ruby"><span class="lineno">1</span> <span class="n">compliant_on</span> <span class="ss">:jruby</span><span class="p">,</span> <span class="ss">:rubinius</span> <span class="k">do</span>
 <span class="lineno">2</span>   <span class="n">it</span> <span class="s2">&quot;returns true&quot;</span> <span class="k">do</span>
 <span class="lineno">3</span>   <span class="k">end</span>
-<span class="lineno">4</span> <span class="k">end</span>
-</code></pre>
-</div>
+<span class="lineno">4</span> <span class="k">end</span></code></pre></div>
 
 <p>The spec above will run ONLY on the <em>standard</em>, JRuby, or Rubinius. The
 <code>compliant_on</code> guard will not run on any other implementation or platform
@@ -270,13 +256,10 @@ specs are <em>always</em> expected to run correctly on the <em>standard</em>. If
 version-specific behavior or a bug in the <em>standard</em>, use the
 <code>ruby_version_is</code> or <code>ruby_bug</code> guard instead.</p>
 
-<div class="highlight"><pre><code class="ruby"><span class="lineno">1</span> <span class="n">compliant_on</span> <span class="ss">:jruby</span><span class="p">,</span> <span class="ss">:rubinius</span> <span class="k">do</span>
-<span class="lineno">2</span> <span class="n">not_compliant_on</span> <span class="ss">:rubinius</span> <span class="k">do</span>
-<span class="lineno">3</span>   <span class="n">it</span> <span class="s2">&quot;returns false&quot;</span> <span class="k">do</span>
-<span class="lineno">4</span>   <span class="k">end</span>
-<span class="lineno">5</span> <span class="k">end</span>
-</code></pre>
-</div>
+<div class="highlight"><pre><code class="ruby"><span class="lineno">1</span> <span class="n">not_compliant_on</span> <span class="ss">:rubinius</span> <span class="k">do</span>
+<span class="lineno">2</span>   <span class="n">it</span> <span class="s2">&quot;returns false&quot;</span> <span class="k">do</span>
+<span class="lineno">3</span>   <span class="k">end</span>
+<span class="lineno">4</span> <span class="k">end</span></code></pre></div>
 
 <p>The spec above will run on EVERY implementation except Rubinius. The
 <code>not_compliant_on</code> guard will always run on the <em>standard</em>.</p>
@@ -311,9 +294,7 @@ like that described in the guarded spec for the listed implementations.</p>
 <div class="highlight"><pre><code class="ruby"><span class="lineno">1</span> <span class="n">not_supported_on</span> <span class="ss">:jruby</span> <span class="k">do</span>
 <span class="lineno">2</span>   <span class="n">it</span> <span class="s2">&quot;forks the process&quot;</span> <span class="k">do</span>
 <span class="lineno">3</span>   <span class="k">end</span>
-<span class="lineno">4</span> <span class="k">end</span>
-</code></pre>
-</div>
+<span class="lineno">4</span> <span class="k">end</span></code></pre></div>
 
 <p>The above spec will run on EVERY implementation <em>except</em> JRuby. In
 particular, it will always run an the <em>standard</em>. Further, it will raise an
@@ -332,9 +313,7 @@ offers an alternative behavior, the spec illustrating that is wrapped in a
 <div class="highlight"><pre><code class="ruby"><span class="lineno">1</span> <span class="n">deviates_on</span> <span class="ss">:rubinius</span> <span class="k">do</span>
 <span class="lineno">2</span>   <span class="n">it</span> <span class="s2">&quot;coerces to two Bignums&quot;</span> <span class="k">do</span>
 <span class="lineno">3</span>   <span class="k">end</span>
-<span class="lineno">4</span> <span class="k">end</span>
-</code></pre>
-</div>
+<span class="lineno">4</span> <span class="k">end</span></code></pre></div>
 
 <p>The above spec will run ONLY on Rubinius. More than one implementation can be
 listed. This guard will NEVER run on the <em>standard</em> and will raise an
@@ -349,9 +328,7 @@ guard.</p>
 <div class="highlight"><pre><code class="ruby"><span class="lineno">1</span> <span class="n">extended_on</span> <span class="ss">:rubinius</span> <span class="k">do</span>
 <span class="lineno">2</span>   <span class="n">it</span> <span class="s2">&quot;returns an immutable vector&quot;</span> <span class="k">do</span>
 <span class="lineno">3</span>   <span class="k">end</span>
-<span class="lineno">4</span> <span class="k">end</span>
-</code></pre>
-</div>
+<span class="lineno">4</span> <span class="k">end</span></code></pre></div>
 
 <p>The above spec will run ONLY on Rubinius. More than one implementation can be
 listed. This guard will NEVER run on the <em>standard</em> and will raise an
@@ -389,9 +366,7 @@ an issue.</p>
 <span class="lineno">6</span> <span class="n">runner_is</span> <span class="ss">:mspec</span> <span class="k">do</span>
 <span class="lineno">7</span>   <span class="n">it</span> <span class="s2">&quot;does something that only runs under MSpec&quot;</span> <span class="k">do</span>
 <span class="lineno">8</span>   <span class="k">end</span>
-<span class="lineno">9</span> <span class="k">end</span>
-</code></pre>
-</div>
+<span class="lineno">9</span> <span class="k">end</span></code></pre></div>
 
 <h4 id="conflictswith">5.2 conflicts_with</h4>
 
@@ -401,9 +376,7 @@ by certain other classes.</p>
 <div class="highlight"><pre><code class="ruby"><span class="lineno">1</span> <span class="n">conflicts_with</span> <span class="ss">:SomeClass</span> <span class="k">do</span>
 <span class="lineno">2</span>   <span class="n">it</span> <span class="s2">&quot;returns an Integer&quot;</span> <span class="k">do</span>
 <span class="lineno">3</span>   <span class="k">end</span>
-<span class="lineno">4</span> <span class="k">end</span>
-</code></pre>
-</div>
+<span class="lineno">4</span> <span class="k">end</span></code></pre></div>
 
 <p>The above guard will NOT yield if SomeClass is defined.</p>
 
@@ -415,9 +388,7 @@ code example has superuser privileges.</p>
 <div class="highlight"><pre><code class="ruby"><span class="lineno">1</span> <span class="n">as_superuser</span> <span class="k">do</span>
 <span class="lineno">2</span>   <span class="n">describe</span> <span class="s2">&quot;File.chown&quot;</span> <span class="k">do</span>
 <span class="lineno">3</span>   <span class="k">end</span>
-<span class="lineno">4</span> <span class="k">end</span>
-</code></pre>
-</div>
+<span class="lineno">4</span> <span class="k">end</span></code></pre></div>
 
 <p>The guard above will only yield if <code>Process.euid == 0</code>.</p>
 
@@ -435,16 +406,14 @@ should be used.</p>
 <div class="highlight"><pre><code class="ruby"><span class="lineno">1</span> <span class="n">quarantine!</span> <span class="k">do</span> 
 <span class="lineno">2</span>   <span class="n">it</span> <span class="s2">&quot;does something that causes a segfault&quot;</span> <span class="k">do</span>
 <span class="lineno">3</span>   <span class="k">end</span>
-<span class="lineno">4</span> <span class="k">end</span>
-</code></pre>
-</div>
+<span class="lineno">4</span> <span class="k">end</span></code></pre></div>
 
 
     </div>
         <div class='container footer'>
       <p>
-  rubyspec.org is Copyright &copy; 2011-12 <a
-    href='http://brixen.io'>Brian Ford</a>
+  rubyspec.org is Copyright &copy; 2011-14 <a
+    href='http://brixen.io'>Brian Shirai</a>
 </p>
 <p>
   <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/"><img

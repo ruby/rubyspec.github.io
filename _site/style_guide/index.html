@@ -68,14 +68,10 @@ is provided for human consumption. The class of the exception is the interface
 that the specs are testing.</p>
 
 <div class="highlight"><pre><code class="ruby"><span class="lineno">1</span> <span class="c1"># The following is correct.</span>
-<span class="lineno">2</span> <span class="nb">lambda</span> <span class="p">{</span> <span class="mi">1</span><span class="o">/</span><span class="mi">0</span> <span class="p">}</span><span class="o">.</span><span class="n">should</span> <span class="n">raise_error</span><span class="p">(</span><span class="no">ZeroDivisionError</span><span class="p">)</span>
-</code></pre>
-</div>
+<span class="lineno">2</span> <span class="nb">lambda</span> <span class="p">{</span> <span class="mi">1</span><span class="o">/</span><span class="mi">0</span> <span class="p">}</span><span class="o">.</span><span class="n">should</span> <span class="n">raise_error</span><span class="p">(</span><span class="no">ZeroDivisionError</span><span class="p">)</span></code></pre></div>
 
 <div class="highlight"><pre><code class="ruby"><span class="lineno">1</span> <span class="c1"># The following is NOT correct.</span>
-<span class="lineno">2</span> <span class="nb">lambda</span> <span class="p">{</span> <span class="mi">1</span><span class="o">/</span><span class="mi">0</span> <span class="p">}</span><span class="o">.</span><span class="n">should</span> <span class="n">raise_error</span><span class="p">(</span><span class="no">ZeroDivisionError</span><span class="p">,</span> <span class="s2">&quot;divided by 0&quot;</span><span class="p">)</span>
-</code></pre>
-</div>
+<span class="lineno">2</span> <span class="nb">lambda</span> <span class="p">{</span> <span class="mi">1</span><span class="o">/</span><span class="mi">0</span> <span class="p">}</span><span class="o">.</span><span class="n">should</span> <span class="n">raise_error</span><span class="p">(</span><span class="no">ZeroDivisionError</span><span class="p">,</span> <span class="s2">&quot;divided by 0&quot;</span><span class="p">)</span></code></pre></div>
 
 <h4 id="one-should-per-example">One “should” per example</h4>
 
@@ -94,9 +90,7 @@ with code like this in core/thread/status_spec.rb:</p>
 <span class="lineno">2</span>   <span class="n">it</span> <span class="s2">&quot;describes a blocked thread&quot;</span> <span class="k">do</span>
 <span class="lineno">3</span>     <span class="no">ThreadSpecs</span><span class="o">.</span><span class="n">status_of_blocked_thread</span><span class="o">.</span><span class="n">status</span><span class="o">.</span><span class="n">should</span> <span class="o">==</span> <span class="s1">&#39;sleep&#39;</span>
 <span class="lineno">4</span>   <span class="k">end</span>
-<span class="lineno">5</span> <span class="k">end</span>
-</code></pre>
-</div>
+<span class="lineno">5</span> <span class="k">end</span></code></pre></div>
 
 <p>and the following in core/thread/inspect_spec.rb:</p>
 
@@ -104,9 +98,7 @@ with code like this in core/thread/status_spec.rb:</p>
 <span class="lineno">2</span>   <span class="n">it</span> <span class="s2">&quot;describes a blocked thread&quot;</span> <span class="k">do</span>
 <span class="lineno">3</span>     <span class="no">ThreadSpecs</span><span class="o">.</span><span class="n">status_of_blocked_thread</span><span class="o">.</span><span class="n">inspect</span><span class="o">.</span><span class="n">should</span> <span class="kp">include</span><span class="p">(</span><span class="s1">&#39;sleep&#39;</span><span class="p">)</span>
 <span class="lineno">4</span>   <span class="k">end</span>
-<span class="lineno">5</span> <span class="k">end</span>
-</code></pre>
-</div>
+<span class="lineno">5</span> <span class="k">end</span></code></pre></div>
 
 <p>Cases where it is OK to break this rule is when the functionality is
 expressable as a table for different values of the argument. For example, the
@@ -114,17 +106,15 @@ following in language/regexp_spec.rb. Each “should” expresses the same theme
 just different specific data-points. Breaking this up into individual
 examples would obscure the larger picture, ie. the “table”.</p>
 
-<div class="highlight"><pre><code class="ruby"><span class="lineno">1</span> <span class="n">it</span> <span class="s2">&quot;supports escape characters&quot;</span> <span class="k">do</span><span class="sr"></span>
-<span class="lineno">2</span> <span class="sr">  /\t/</span><span class="o">.</span><span class="n">match</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\t</span><span class="s2">&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">to_a</span><span class="o">.</span><span class="n">should</span> <span class="o">==</span> <span class="o">[</span><span class="s2">&quot;</span><span class="se">\t</span><span class="s2">&quot;</span><span class="o">]</span> <span class="c1"># horizontal tab</span><span class="sr"></span>
-<span class="lineno">3</span> <span class="sr">  /\v/</span><span class="o">.</span><span class="n">match</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\v</span><span class="s2">&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">to_a</span><span class="o">.</span><span class="n">should</span> <span class="o">==</span> <span class="o">[</span><span class="s2">&quot;</span><span class="se">\v</span><span class="s2">&quot;</span><span class="o">]</span> <span class="c1"># vertical tab</span><span class="sr"></span>
-<span class="lineno">4</span> <span class="sr">  /\n/</span><span class="o">.</span><span class="n">match</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">to_a</span><span class="o">.</span><span class="n">should</span> <span class="o">==</span> <span class="o">[</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="o">]</span> <span class="c1"># newline</span><span class="sr"></span>
-<span class="lineno">5</span> <span class="sr">  //.match(&quot;&quot;).to_a.should == [&quot;&quot;] # return</span>
-<span class="lineno">6</span> <span class="sr">  /</span><span class="p">\</span><span class="n">f</span><span class="o">/.</span><span class="n">match</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\f</span><span class="s2">&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">to_a</span><span class="o">.</span><span class="n">should</span> <span class="o">==</span> <span class="o">[</span><span class="s2">&quot;</span><span class="se">\f</span><span class="s2">&quot;</span><span class="o">]</span> <span class="c1"># form feed</span><span class="sr"></span>
-<span class="lineno">7</span> <span class="sr">  /\a/</span><span class="o">.</span><span class="n">match</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\a</span><span class="s2">&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">to_a</span><span class="o">.</span><span class="n">should</span> <span class="o">==</span> <span class="o">[</span><span class="s2">&quot;</span><span class="se">\a</span><span class="s2">&quot;</span><span class="o">]</span> <span class="c1"># bell</span><span class="sr"></span>
-<span class="lineno">8</span> <span class="sr">  /\e/</span><span class="o">.</span><span class="n">match</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\e</span><span class="s2">&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">to_a</span><span class="o">.</span><span class="n">should</span> <span class="o">==</span> <span class="o">[</span><span class="s2">&quot;</span><span class="se">\e</span><span class="s2">&quot;</span><span class="o">]</span> <span class="c1"># escape</span>
-<span class="lineno">9</span> <span class="k">end</span>
-</code></pre>
-</div>
+<div class="highlight"><pre><code class="ruby"><span class="lineno">1</span> <span class="n">it</span> <span class="s2">&quot;supports escape characters&quot;</span> <span class="k">do</span>
+<span class="lineno">2</span>   <span class="sr">/\t/</span><span class="o">.</span><span class="n">match</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\t</span><span class="s2">&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">to_a</span><span class="o">.</span><span class="n">should</span> <span class="o">==</span> <span class="o">[</span><span class="s2">&quot;</span><span class="se">\t</span><span class="s2">&quot;</span><span class="o">]</span> <span class="c1"># horizontal tab</span>
+<span class="lineno">3</span>   <span class="sr">/\v/</span><span class="o">.</span><span class="n">match</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\v</span><span class="s2">&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">to_a</span><span class="o">.</span><span class="n">should</span> <span class="o">==</span> <span class="o">[</span><span class="s2">&quot;</span><span class="se">\v</span><span class="s2">&quot;</span><span class="o">]</span> <span class="c1"># vertical tab</span>
+<span class="lineno">4</span>   <span class="sr">/\n/</span><span class="o">.</span><span class="n">match</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">to_a</span><span class="o">.</span><span class="n">should</span> <span class="o">==</span> <span class="o">[</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="o">]</span> <span class="c1"># newline</span>
+<span class="lineno">5</span>   <span class="sr">//</span><span class="o">.</span><span class="n">match</span><span class="p">(</span><span class="s2">&quot;&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">to_a</span><span class="o">.</span><span class="n">should</span> <span class="o">==</span> <span class="o">[</span><span class="s2">&quot;&quot;</span><span class="o">]</span> <span class="c1"># return</span>
+<span class="lineno">6</span>   <span class="sr">/\f/</span><span class="o">.</span><span class="n">match</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\f</span><span class="s2">&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">to_a</span><span class="o">.</span><span class="n">should</span> <span class="o">==</span> <span class="o">[</span><span class="s2">&quot;</span><span class="se">\f</span><span class="s2">&quot;</span><span class="o">]</span> <span class="c1"># form feed</span>
+<span class="lineno">7</span>   <span class="sr">/\a/</span><span class="o">.</span><span class="n">match</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\a</span><span class="s2">&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">to_a</span><span class="o">.</span><span class="n">should</span> <span class="o">==</span> <span class="o">[</span><span class="s2">&quot;</span><span class="se">\a</span><span class="s2">&quot;</span><span class="o">]</span> <span class="c1"># bell</span>
+<span class="lineno">8</span>   <span class="sr">/\e/</span><span class="o">.</span><span class="n">match</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\e</span><span class="s2">&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">to_a</span><span class="o">.</span><span class="n">should</span> <span class="o">==</span> <span class="o">[</span><span class="s2">&quot;</span><span class="se">\e</span><span class="s2">&quot;</span><span class="o">]</span> <span class="c1"># escape</span>
+<span class="lineno">9</span> <span class="k">end</span></code></pre></div>
 
 <h4 id="detail-level-of-tests">Detail level of tests</h4>
 
@@ -166,9 +156,7 @@ the method name.</p>
 <span class="lineno"> 9</span>   <span class="n">it</span> <span class="s2">&quot;returns non-array value if non-array value assigned&quot;</span> <span class="k">do</span>
 <span class="lineno">10</span>     <span class="o">.</span><span class="n">.</span><span class="o">.</span>
 <span class="lineno">11</span>   <span class="k">end</span>
-<span class="lineno">12</span> <span class="k">end</span>
-</code></pre>
-</div>
+<span class="lineno">12</span> <span class="k">end</span></code></pre></div>
 
 <p>Contrast the <em>good</em> example above with the one below. The following example
 deviates from the conventions for <code>describe</code> strings and uses “should” and
@@ -185,9 +173,7 @@ single-quotes for the descriptions.</p>
 <span class="lineno"> 9</span>   <span class="n">it</span> <span class="s1">&#39;returns non-array value if non-array value assigned&#39;</span> <span class="k">do</span>
 <span class="lineno">10</span>     <span class="o">.</span><span class="n">.</span><span class="o">.</span>
 <span class="lineno">11</span>   <span class="k">end</span>
-<span class="lineno">12</span> <span class="k">end</span>
-</code></pre>
-</div>
+<span class="lineno">12</span> <span class="k">end</span></code></pre></div>
 
 <p>The vast majority of the spec files for the core library have already been
 created. To create template files for the standard library classes, refer to
@@ -202,9 +188,7 @@ should be scoped to a module. The convention is as follows:</p>
 <div class="highlight"><pre><code class="ruby"><span class="lineno">1</span> <span class="k">module</span> <span class="nn">ObjectSpecs</span>
 <span class="lineno">2</span>   <span class="k">class</span> <span class="nc">SomeClass</span>
 <span class="lineno">3</span>   <span class="k">end</span>
-<span class="lineno">4</span> <span class="k">end</span>
-</code></pre>
-</div>
+<span class="lineno">4</span> <span class="k">end</span></code></pre></div>
 
 <p>The module is named after the class for which the specs are being written.
 So, for the specs for <em>Object</em>, the module name is ObjectSpecs.</p>
@@ -222,7 +206,7 @@ otherwise identical interfaces.)</p>
 
 <p>In <code>rubyspec/core/array/shared/collect.rb</code></p>
 
-<div class="highlight"><pre><code class="ruby"><span class="lineno"> 1</span>     <span class="n">describe</span> <span class="ss">:array_collect</span><span class="p">,</span> <span class="ss">:shared</span> <span class="o">=&gt;</span> <span class="kp">true</span> <span class="k">do</span>
+<div class="highlight"><pre><code class="ruby"><span class="lineno"> 1</span> <span class="n">describe</span> <span class="ss">:array_collect</span><span class="p">,</span> <span class="ss">:shared</span> <span class="o">=&gt;</span> <span class="kp">true</span> <span class="k">do</span>
 <span class="lineno"> 2</span>       <span class="n">it</span> <span class="s2">&quot;returns a copy of array with each element replaced by the value returned by block&quot;</span> <span class="k">do</span>
 <span class="lineno"> 3</span>         <span class="n">a</span> <span class="o">=</span> <span class="o">[</span><span class="s1">&#39;a&#39;</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span><span class="p">,</span> <span class="s1">&#39;c&#39;</span><span class="p">,</span> <span class="s1">&#39;d&#39;</span><span class="o">]</span>
 <span class="lineno"> 4</span>         <span class="n">b</span> <span class="o">=</span> <span class="n">a</span><span class="o">.</span><span class="n">send</span><span class="p">(</span><span class="vi">@method</span><span class="p">)</span> <span class="p">{</span> <span class="o">|</span><span class="n">i</span><span class="o">|</span> <span class="n">i</span> <span class="o">+</span> <span class="s1">&#39;!&#39;</span> <span class="p">}</span>
@@ -233,9 +217,7 @@ otherwise identical interfaces.)</p>
 <span class="lineno"> 9</span>       <span class="n">it</span> <span class="s2">&quot;does not return subclass instance&quot;</span> <span class="k">do</span>
 <span class="lineno">10</span>         <span class="no">ArraySpecs</span><span class="o">::</span><span class="no">MyArray</span><span class="o">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="o">].</span><span class="n">send</span><span class="p">(</span><span class="vi">@method</span><span class="p">)</span> <span class="p">{</span> <span class="o">|</span><span class="n">x</span><span class="o">|</span> <span class="n">x</span> <span class="o">+</span> <span class="mi">1</span> <span class="p">}</span><span class="o">.</span><span class="n">class</span><span class="o">.</span><span class="n">should</span> <span class="o">==</span> <span class="nb">Array</span>
 <span class="lineno">11</span>       <span class="k">end</span>
-<span class="lineno">12</span>     <span class="k">end</span>
-</code></pre>
-</div>
+<span class="lineno">12</span>     <span class="k">end</span></code></pre></div>
 
 <p>In <code>rubyspec/core/array/collect_spec.rb</code></p>
 
@@ -244,9 +226,7 @@ otherwise identical interfaces.)</p>
 <span class="lineno">3</span> 
 <span class="lineno">4</span> <span class="n">describe</span> <span class="s2">&quot;Array#collect&quot;</span> <span class="k">do</span>
 <span class="lineno">5</span>   <span class="n">it_behaves_like</span> <span class="ss">:array_collect</span><span class="p">,</span> <span class="ss">:collect</span>
-<span class="lineno">6</span> <span class="k">end</span>
-</code></pre>
-</div>
+<span class="lineno">6</span> <span class="k">end</span></code></pre></div>
 
 <p>In <code>rubyspec/core/array/map_spec.rb</code></p>
 
@@ -255,9 +235,7 @@ otherwise identical interfaces.)</p>
 <span class="lineno">3</span> 
 <span class="lineno">4</span> <span class="n">describe</span> <span class="s2">&quot;Array#map&quot;</span> <span class="k">do</span>
 <span class="lineno">5</span>   <span class="n">it_behaves_like</span> <span class="ss">:array_collect</span><span class="p">,</span> <span class="ss">:map</span>
-<span class="lineno">6</span> <span class="k">end</span>
-</code></pre>
-</div>
+<span class="lineno">6</span> <span class="k">end</span></code></pre></div>
 
 <h4 id="floating-point-values">1.3 Floating Point Values</h4>
 
@@ -307,9 +285,7 @@ performs some action; or 2) <code>#to_int</code> is not called.</p>
 <span class="lineno">2</span>   <span class="k">def</span> <span class="nf">method_missing</span><span class="p">(</span><span class="n">sym</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">)</span>
 <span class="lineno">3</span>     <span class="k">return</span> <span class="mi">1</span> <span class="k">if</span> <span class="n">sym</span> <span class="o">==</span> <span class="ss">:to_int</span>
 <span class="lineno">4</span>   <span class="k">end</span>
-<span class="lineno">5</span> <span class="k">end</span>
-</code></pre>
-</div>
+<span class="lineno">5</span> <span class="k">end</span></code></pre></div>
 
 <p>In such case, the behavior of the following code would be different:</p>
 
@@ -317,9 +293,7 @@ performs some action; or 2) <code>#to_int</code> is not called.</p>
 <span class="lineno">2</span> <span class="o">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="o">].</span><span class="n">at</span><span class="p">(</span><span class="n">silly</span><span class="p">)</span> <span class="c1"># =&gt; 2</span>
 <span class="lineno">3</span> 
 <span class="lineno">4</span> <span class="c1"># The implementation calls #respond_to? first</span>
-<span class="lineno">5</span> <span class="o">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="o">].</span><span class="n">at</span><span class="p">(</span><span class="n">silly</span><span class="p">)</span> <span class="c1"># =&gt; TypeError</span>
-</code></pre>
-</div>
+<span class="lineno">5</span> <span class="o">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="o">].</span><span class="n">at</span><span class="p">(</span><span class="n">silly</span><span class="p">)</span> <span class="c1"># =&gt; TypeError</span></code></pre></div>
 
 <p>In the second case, the expected behavior is restored if the Silly class is
 modified to implement a <code>#respond_to?(:to_int)</code>.</p>
@@ -349,8 +323,8 @@ block initially and add distinguishing <code>describe</code> blocks as necessary
     </div>
         <div class='container footer'>
       <p>
-  rubyspec.org is Copyright &copy; 2011-12 <a
-    href='http://brixen.io'>Brian Ford</a>
+  rubyspec.org is Copyright &copy; 2011-14 <a
+    href='http://brixen.io'>Brian Shirai</a>
 </p>
 <p>
   <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/"><img
