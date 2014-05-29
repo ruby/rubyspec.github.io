@@ -1,10 +1,20 @@
 ---
-server: false
-
-markdown: kramdown
-
-pygments: true
+url: http://rubyspec.org
+safe: true
+lsi: false
 permalink: pretty
-
-exclude: README
----
+source: .
+destination: ./public
+exclude:
+  - Rakefile
+  - README.md
+  - Gemfile
+  - Gemfile.lock
+  - CNAME
+  - .gitignore
+  - ./public
+  - ./stylesheets/*.scss
+markdown: rdiscount
+pygments: true
+pygments: false
+port: 9876
