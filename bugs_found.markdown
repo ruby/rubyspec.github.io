@@ -12,7 +12,7 @@ to decide.
 
 When encountering a bug in MRI, use the following steps:
 
-1. Search the [Redmine MRI bug tracker](http://redmine.ruby-lang.org/) and the
+1. Search the [Redmine MRI bug tracker](http://bugs.ruby-lang.org/) and the
    ruby-core mailing list for the same or similar behavior.
 1. If there is an existing ticket for the issue, use the ticket number in a
    `ruby_bug` guard.

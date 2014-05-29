@@ -80,13 +80,13 @@ the guard may include or exclude the ending version.</p>
 <span class="lineno"> 3</span>   <span class="n">it</span> <span class="s2">&quot;returns true&quot;</span> <span class="k">do</span>
 <span class="lineno"> 4</span>   <span class="k">end</span>
 <span class="lineno"> 5</span> <span class="k">end</span>
-<span class="lineno"> 6</span> 
+<span class="lineno"> 6</span>
 <span class="lineno"> 7</span> <span class="c1"># Yields block if version is in the 1.8 series, except 1.8.7 and beyond.</span>
 <span class="lineno"> 8</span> <span class="n">ruby_version_is</span> <span class="s2">&quot;1.8&quot;</span> <span class="o">.</span><span class="n">.</span> <span class="s2">&quot;1.8.6&quot;</span> <span class="k">do</span>
 <span class="lineno"> 9</span>   <span class="n">it</span> <span class="s2">&quot;returns nil&quot;</span> <span class="k">do</span>
 <span class="lineno">10</span>   <span class="k">end</span>
 <span class="lineno">11</span> <span class="k">end</span>
-<span class="lineno">12</span> 
+<span class="lineno">12</span>
 <span class="lineno">13</span> <span class="c1"># Yields block if version &lt; 1.9.</span>
 <span class="lineno">14</span> <span class="n">ruby_version_is</span> <span class="s2">&quot;&quot;</span> <span class="o">.</span><span class="n">.</span><span class="o">.</span> <span class="s2">&quot;1.9&quot;</span> <span class="k">do</span>
 <span class="lineno">15</span>   <span class="n">it</span> <span class="s2">&quot;returns false&quot;</span> <span class="k">do</span>
@@ -179,7 +179,7 @@ instead.</p>
 <p>Sometimes a bug is discovered in the <em>standard</em>. In this case, we do two things:</p>
 
 <ol>
-  <li>File a ticket on the “bug tracker”:http://redmine.ruby-lang.org/ to find</li>
+  <li>File a ticket on the “bug tracker”:http://bugs.ruby-lang.org/ to find</li>
   <li>out if the suspected behavior is actually considered a bug.</li>
   <li>Add a <code>ruby_bug</code> guard that wraps the spec showing what is considered to be</li>
   <li>the <em>correct</em> behavior.</li>
@@ -385,7 +385,7 @@ an issue.</p>
 <span class="lineno">2</span>   <span class="n">it</span> <span class="s2">&quot;does something that only runs under RSpec&quot;</span> <span class="k">do</span>
 <span class="lineno">3</span>   <span class="k">end</span>
 <span class="lineno">4</span> <span class="k">end</span>
-<span class="lineno">5</span> 
+<span class="lineno">5</span>
 <span class="lineno">6</span> <span class="n">runner_is</span> <span class="ss">:mspec</span> <span class="k">do</span>
 <span class="lineno">7</span>   <span class="n">it</span> <span class="s2">&quot;does something that only runs under MSpec&quot;</span> <span class="k">do</span>
 <span class="lineno">8</span>   <span class="k">end</span>
@@ -432,7 +432,7 @@ allows the spec to be investigated but not cause any failures.</p>
 <p>If a spec exposes a bug that is causing a segfault, the <code>ruby_bug</code> guard
 should be used.</p>
 
-<div class="highlight"><pre><code class="ruby"><span class="lineno">1</span> <span class="n">quarantine!</span> <span class="k">do</span> 
+<div class="highlight"><pre><code class="ruby"><span class="lineno">1</span> <span class="n">quarantine!</span> <span class="k">do</span>
 <span class="lineno">2</span>   <span class="n">it</span> <span class="s2">&quot;does something that causes a segfault&quot;</span> <span class="k">do</span>
 <span class="lineno">3</span>   <span class="k">end</span>
 <span class="lineno">4</span> <span class="k">end</span>

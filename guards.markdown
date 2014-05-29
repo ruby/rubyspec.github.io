@@ -158,7 +158,7 @@ instead.
 
 Sometimes a bug is discovered in the _standard_. In this case, we do two things:
 
-1. File a ticket on the "bug tracker":http://redmine.ruby-lang.org/ to find
+1. File a ticket on the "bug tracker":http://bugs.ruby-lang.org/ to find
    out if the suspected behavior is actually considered a bug.
 1. Add a `ruby_bug` guard that wraps the spec showing what is considered to be
    the _correct_ behavior.
@@ -405,7 +405,7 @@ If a spec exposes a bug that is causing a segfault, the `ruby_bug` guard
 should be used.
 
 {% highlight ruby linenos %}
-quarantine! do 
+quarantine! do
   it "does something that causes a segfault" do
   end
 end
