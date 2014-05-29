@@ -42,3 +42,9 @@ File issues at [https://github.com/rubyspec/rubyspec/issues/
 * [mspec-ci](/mspec-ci/)
 * [mspec-tag](/mspec-tag/)
 * [mkspec](/mkspec/)
+
+
+## Ruby Implementation Resources
+
+* [Programming Languages — Ruby, IPA Ruby Standardization WG Draft (The Ruby 1.8 ISO Draft)](https://www.ipa.go.jp/osc/english/ruby/)
+* [The Ruby Bibliography](/bibliography/)
