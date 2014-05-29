@@ -1,0 +1,6 @@
+.bundle
+.rbx
+*.un~
+public/*
+build/*
+Gemfile.lock
