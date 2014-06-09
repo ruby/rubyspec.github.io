@@ -34,13 +34,13 @@ books and articles about Ruby](https://www.ruby-lang.org/en/documentation/).
 
 ## Parallelism and Concurrency
 
-* **L. Lu, W. Ji, and M. L. Scott.** Dynamic enforcement of determinism in a parallel scripting language. In Proceedings of the 35th Conference on Programming Language Design and Implementation (PLDI), 2014. (to appear)
+* **L. Lu, W. Ji, and M. L. Scott.** [Dynamic enforcement of determinism in a parallel scripting language](http://www.cs.rochester.edu/u/scott/papers/2014_PLDI_DPR.pdf). In Proceedings of the 35th Conference on Programming Language Design and Implementation (PLDI), 2014. ([source code](https://github.com/RB-DPR/RB-DPR))
 * **R. Odaira, J. G. Castanos, and H. Tomari.** [Eliminating global interpreter locks in Ruby through hardware transactional memory](http://researcher.watson.ibm.com/researcher/files/jp-ODAIRA/PPoPP2014_RubyGILHTM.pdf). In Proceedings of the 19th Symposium on Principles and Practice of Parallel Programming (PPoPP), 2014.
 * **W. Ji, L. Lu, and M. L. Scott.** [TARDIS: Task-level access race detection by intersecting sets](http://wodet.cs.washington.edu/wp-content/uploads/2013/03/wodet2013-final9.pdf). In Proceedings of the 4th Workshop on Determinism and Correctness in Parallel Programming (WoDet), 2013.
 
 ## Tooling
 
-* **C. Seaton, M. L. Van De Vanter, and M. Haupt.** [Debugging at full speed](http://www.lifl.fr/dyla14/papers/dyla14-3-Debugging_at_Full_Speed.pdf). In Proceedings of the 8th Workshop on Dynamic Languages and Applications (DYLA), 2014.
+* **C. Seaton, M. L. Van De Vanter, and M. Haupt.** [Debugging at full speed](http://www.lifl.fr/dyla14/papers/dyla14-3-Debugging_at_Full_Speed.pdf). In Proceedings of the 8th Workshop on Dynamic Languages and Applications (DYLA), 2014. ([source code](http://lafo.ssw.uni-linz.ac.at/truffle/debugging/dyla14-debugging-artifact-0557a4f756d4.tar.gz))
 
 ## Type Systems
 
