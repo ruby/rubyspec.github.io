@@ -40,7 +40,7 @@ books and articles about Ruby](https://www.ruby-lang.org/en/documentation/).
 
 ## Tooling
 
-* **C. Seaton, M. L. Van De Vanter, and M. Haupt.** [Debugging at full speed](http://www.lifl.fr/dyla14/papers/dyla14-3-Debugging_at_Full_Speed.pdf). In Proceedings of the 8th Workshop on Dynamic Languages and Applications (DYLA), 2014.
+* **C. Seaton, M. L. Van De Vanter, and M. Haupt.** [Debugging at full speed](http://www.lifl.fr/dyla14/papers/dyla14-3-Debugging_at_Full_Speed.pdf). In Proceedings of the 8th Workshop on Dynamic Languages and Applications (DYLA), 2014. ([source code](http://lafo.ssw.uni-linz.ac.at/truffle/debugging/dyla14-debugging-artifact-0557a4f756d4.tar.gz))
 
 ## Type Systems
 
