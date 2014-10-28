@@ -10,7 +10,7 @@ implementation.
 
 The goal is to maintain locality by grouping related specs. Generally, there is
 a single element (method, syntax element) per file, and the files are organized
-into two main directories: language, core. Below is a partial graphic of the
+into two main directories: language and core. Below is a partial graphic of the
 directory tree.
 
     spec
