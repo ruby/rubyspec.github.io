@@ -8,10 +8,10 @@ There are many conceivable ways to organize the spec files. The structure is
 based on the Ruby language as well as the major components of a Ruby
 implementation.
 
-The goal is to maintain locality by grouping related specs. Generally, there
-is a single element (method, syntax element) per file, and the files are
-organized into three main directories: language, core, and library. Below is
-a partial graphic of the directory tree.
+The goal is to maintain locality by grouping related specs. Generally, there is
+a single element (method, syntax element) per file, and the files are organized
+into two main directories: language, core. Below is a partial graphic of the
+directory tree.
 
     spec
     |-- core
@@ -25,11 +25,6 @@ a partial graphic of the directory tree.
     |     + -- unboundmethod
     |-- fixtures
     |-- language
-    +-- library
-          + -- enumerator
-          + -- ...
-          + -- time
-          + -- yaml
 
 
 ### Syntax-sensitive Specs
@@ -96,10 +91,3 @@ like "?", "=", and "!" are in files named by stripping those characters. For
 example, specs for Array#compact! are in the same file as specs for
 Array#compact. All the spec files that are needed have already likely been
 created. (See the documentation for [mkspec](/mkspec/) for details.)
-
-### Standard library
-
-The `library` directory contains specs for the classes of the Ruby standard
-library. The same naming convention used in the `core` directory applies here
-as well.
-
