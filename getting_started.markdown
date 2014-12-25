@@ -72,12 +72,8 @@ version.
 
 <pre>
 $ mspec :core
-$ mspec :library
 $ mspec :language
 </pre>
-
-The pseudo-directory for `:library` is the most useful since there are both
-1.8 and 1.9 specific libraries in the `rubyspec/library` directory.
 
 ### Runner script help
 
