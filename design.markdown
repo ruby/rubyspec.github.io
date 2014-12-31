@@ -63,9 +63,5 @@ elaboration and clarification.
 
 ---
 
-_**If you support the design process for Ruby outlined above, please let your
-voice be heard by signing below.**_
+_**This petition is closed. No further signatures will be accepted.**_
 
-<div class="signatures">
-  <iframe src="//signatures.rubyspec.org" frameborder="0" scrolling="no"></iframe>
-</div>
