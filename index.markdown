@@ -4,9 +4,9 @@ layout: page
 
 RubySpec is a project to write an executable specification for the [Ruby
 Programming Language](http://ruby-lang.org/). The source code is at
-[https://github.com/rubyspec/rubyspec/](https://github.com/rubyspec/rubyspec/).
-File issues at [https://github.com/rubyspec/rubyspec/issues/
-](https://github.com/rubyspec/rubyspec/issues/).
+[https://github.com/ruby/rubyspec/](https://github.com/ruby/rubyspec/).
+File issues at [https://github.com/ruby/rubyspec/issues/
+](https://github.com/ruby/rubyspec/issues/).
 
 
 ## Introduction

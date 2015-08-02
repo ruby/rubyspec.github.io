@@ -10,7 +10,7 @@ To run the RubySpecs, you need to get MSpec and the RubySpec files.
 
 MSpec is the framework and scripts for running the RubySpecs. It is available
 as a gem or directly from
-[Github](http://github.com/rubyspec/mspec/tree/master).
+[Github](http://github.com/ruby/mspec/tree/master).
 
 <pre>
 $ sudo gem install mspec
@@ -19,7 +19,7 @@ $ sudo gem install mspec
 OR
 
 <pre>
-$ git clone git://github.com/rubyspec/mspec.git
+$ git clone git://github.com/ruby/mspec.git
 </pre>
 
 If you are going to be working on the RubySpecs, you are _strongly_ encouraged
@@ -28,10 +28,10 @@ to always use the latest MSpec from Github.
 ### Getting the RubySpecs
 
 The RubySpec source is available from
-[Github](http://github.com/rubyspec/rubyspec/tree/master).
+[Github](http://github.com/ruby/rubyspec/tree/master).
 
 <pre>
-$ git clone git://github.com/rubyspec/rubyspec.git
+$ git clone git://github.com/ruby/rubyspec.git
 </pre>
 
 If you are not working on the RubySpecs, you can checkout a particular version
