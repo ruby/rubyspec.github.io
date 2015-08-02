@@ -16,5 +16,4 @@ exclude:
   - ./stylesheets/*.scss
 markdown: rdiscount
 pygments: true
-pygments: false
 port: 9876
