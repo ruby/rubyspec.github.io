@@ -54,7 +54,7 @@ $ mspec
 
 This will run the specs with the `ruby` executable on PATH. To run the specs
 with a different implementation, see the `-t` or `--target` option to mspec.
-See `mspec -h` for more details. Read the [Runners](/runners/) documentation
+See `mspec -h` for more details. Read the [Runners]({{ site.baseurl }}/runners/) documentation
 for complete details on all the runner scripts.
 
 To run a single directory of specs, pass the path to the directory to `mspec`.

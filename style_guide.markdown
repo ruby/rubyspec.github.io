@@ -177,7 +177,7 @@ end
 
 The vast majority of the spec files for the core library have already been
 created. To create template files for the standard library classes, refer to
-the [mkspec](/mkspec/) documentation.
+the [mkspec]({{ site.baseurl }}/mkspec/) documentation.
 
 #### 1.1 Utility Classes
 
@@ -325,7 +325,7 @@ that may exhibit perfectly compatible behavior but not call `#respond_to?`.
 
 For the language specs, there is nothing as convenient or as concrete as a
 particular method to spec. Review the discussion of the
-[organization](/organization/) of the language specs. The general
+[organization]({{ site.baseurl }}/organization/) of the language specs. The general
 conventions apply here: use simple English to describe the behavior of the
 _language entities_ and only add detail as needed. Use a single `describe`
 block initially and add distinguishing `describe` blocks as necessary. Use

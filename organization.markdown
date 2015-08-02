@@ -37,9 +37,9 @@ There are three primary challenges in combining the 1.8 and 1.9 specs:
 
 The three issues above are addressed as follows:
 
-1. Put any syntax-sensitive specs into a version-specific file and use the `language_version` helper to conditionally run those specs. See [MSpec Helpers](/helpers/) and the `language/method_spec.rb` specs for examples.
-1. Use <code>ruby_version_is</code> guards as usual for any methods or method behaviors specific to a particular version. See [MSpec Guards](/guards/).
-1. Add exclusion lines to the <code>:files</code> config setting in either <code>ruby.1.8.mspec</code> or <code>ruby.1.9.mspec</code> for libraries or classes that should not be run in the respective version. See [MSpec Configuration](/configuration/).
+1. Put any syntax-sensitive specs into a version-specific file and use the `language_version` helper to conditionally run those specs. See [MSpec Helpers]({{ site.baseurl }}/helpers/) and the `language/method_spec.rb` specs for examples.
+1. Use <code>ruby_version_is</code> guards as usual for any methods or method behaviors specific to a particular version. See [MSpec Guards]({{ site.baseurl }}/guards/).
+1. Add exclusion lines to the <code>:files</code> config setting in either <code>ruby.1.8.mspec</code> or <code>ruby.1.9.mspec</code> for libraries or classes that should not be run in the respective version. See [MSpec Configuration]({{ site.baseurl }}/configuration/).
 
 ### Language
 
@@ -90,4 +90,4 @@ places in `spec/core/array/compact_spec.rb`. Method names with characters
 like "?", "=", and "!" are in files named by stripping those characters. For
 example, specs for Array#compact! are in the same file as specs for
 Array#compact. All the spec files that are needed have already likely been
-created. (See the documentation for [mkspec](/mkspec/) for details.)
+created. (See the documentation for [mkspec]({{ site.baseurl }}/mkspec/) for details.)

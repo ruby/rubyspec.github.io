@@ -15,7 +15,7 @@ tagged as failing. The bin/mspec ci command accepts a file, directory, or
 shell glob to specify which spec files to execute. Invoking the command
 without any files will cause the default set of files specified by the
 configuration file to be run (See the
-[configuration](/configuration/) document). The default formatter for
+[configuration]({{ site.baseurl }}/configuration/) document). The default formatter for
 bin/mspec ci is dotted output (i.e. ... for passing specs, F for failing
 specs, and E for errors).
 

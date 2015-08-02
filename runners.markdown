@@ -11,11 +11,11 @@ essentially just collect your wishes, configure the moving parts of the MSpec
 module, hand over control to MSpec, and get out of the way. The links below
 describe each of the runner scripts in detail.
 
-* [mspec](/mspec/)
-* [mspec-run](/mspec-run/)
-* [mspec-tag](/mspec-tag/)
-* [mspec-ci](/mspec-ci/)
+* [mspec]({{ site.baseurl }}/mspec/)
+* [mspec-run]({{ site.baseurl }}/mspec-run/)
+* [mspec-tag]({{ site.baseurl }}/mspec-tag/)
+* [mspec-ci]({{ site.baseurl }}/mspec-ci/)
 
 Since consistency is a boon to readability, MSpec provides a script to
-generate template spec files. See the documentation for [mkspec](/mkspec/).
+generate template spec files. See the documentation for [mkspec]({{ site.baseurl }}/mkspec/).
 

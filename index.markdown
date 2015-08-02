@@ -11,37 +11,37 @@ File issues at [https://github.com/rubyspec/rubyspec/issues/
 
 ## Introduction
 
-* [Overview](/overview/)
-* [Getting Started](/getting_started/)
-* [Current Standard](/current_standard/)
-* [History](/history/)
-* [Contributing](/contributing/)
+* [Overview]({{ site.baseurl }}/overview/)
+* [Getting Started]({{ site.baseurl }}/getting_started/)
+* [Current Standard]({{ site.baseurl }}/current_standard/)
+* [History]({{ site.baseurl }}/history/)
+* [Contributing]({{ site.baseurl }}/contributing/)
 
 
 ## Working on RubySpec
 
-* [Organization](/organization/)
-* [Style Guide](/style_guide/)
-* [Helpers](/helpers/)
-* [Guards](/guards/)
-* [Matchers](/matchers/)
-* [Runners](/runners/)
-* [Configuration](/configuration/)
+* [Organization]({{ site.baseurl }}/organization/)
+* [Style Guide]({{ site.baseurl }}/style_guide/)
+* [Helpers]({{ site.baseurl }}/helpers/)
+* [Guards]({{ site.baseurl }}/guards/)
+* [Matchers]({{ site.baseurl }}/matchers/)
+* [Runners]({{ site.baseurl }}/runners/)
+* [Configuration]({{ site.baseurl }}/configuration/)
 
 
 ## Challenges
 
-* [Ruby 1.9 Issues](/ruby-1.9-issues/)
-* [Bugs Found While Writing Specs](/bugs_found/)
+* [Ruby 1.9 Issues]({{ site.baseurl }}/ruby-1.9-issues/)
+* [Bugs Found While Writing Specs]({{ site.baseurl }}/bugs_found/)
 
 
 ## Commands
 
-* [mspec](/mspec/)
-* [mspec-run](/mspec-run/)
-* [mspec-ci](/mspec-ci/)
-* [mspec-tag](/mspec-tag/)
-* [mkspec](/mkspec/)
+* [mspec]({{ site.baseurl }}/mspec/)
+* [mspec-run]({{ site.baseurl }}/mspec-run/)
+* [mspec-ci]({{ site.baseurl }}/mspec-ci/)
+* [mspec-tag]({{ site.baseurl }}/mspec-tag/)
+* [mkspec]({{ site.baseurl }}/mkspec/)
 
 
 ## Ruby Implementation Resources

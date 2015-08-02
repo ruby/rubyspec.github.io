@@ -4,7 +4,7 @@ layout: page
 
 ## mspec-run
 
-Once the [mspec](/mspec/) options are processed, the designated target is executed with the remaining options. The general purpose spec runner, `bin/mspec-run`, accepts a file, directory, or shell glob to specify which spec files to execute. It has the following options:
+Once the [mspec]({{ site.baseurl }}/mspec/) options are processed, the designated target is executed with the remaining options. The general purpose spec runner, `bin/mspec-run`, accepts a file, directory, or shell glob to specify which spec files to execute. It has the following options:
 
 <pre>
 $ bin/mspec run -h
