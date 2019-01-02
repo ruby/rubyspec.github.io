@@ -53,12 +53,12 @@ raises are rescues the _class_ of an exception, not the error message, which
 is provided for human consumption. The class of the exception is the interface
 that the specs are testing.
 
-{% highlight ruby linenos %}
+{% highlight ruby %}
 # The following is correct.
 lambda { 1/0 }.should raise_error(ZeroDivisionError)
 {% endhighlight %}
 
-{% highlight ruby linenos %}
+{% highlight ruby %}
 # The following is NOT correct.
 lambda { 1/0 }.should raise_error(ZeroDivisionError, "divided by 0")
 {% endhighlight %}
@@ -76,7 +76,7 @@ Instead, this principle can be honored by keeping the fixture code in method
 ThreadSpecs.status_of_blocked_thread in core/thread/fixtures/classes.rb, and
 with code like this in core/thread/status_spec.rb:
 
-{% highlight ruby linenos %}
+{% highlight ruby %}
 describe "Thread#status" do
   it "describes a blocked thread" do
     ThreadSpecs.status_of_blocked_thread.status.should == 'sleep'
@@ -86,7 +86,7 @@ end
 
 and the following in core/thread/inspect_spec.rb:
 
-{% highlight ruby linenos %}
+{% highlight ruby %}
 describe "Thread#inspect" do
   it "describes a blocked thread" do
     ThreadSpecs.status_of_blocked_thread.inspect.should include('sleep')
@@ -100,7 +100,7 @@ following in language/regexp_spec.rb. Each "should" expresses the same theme,
 just different specific data-points. Breaking this up into individual
 examples would obscure the larger picture, ie. the "table".
 
-{% highlight ruby linenos %}
+{% highlight ruby %}
 it "supports escape characters" do
   /\t/.match("\t").to_a.should == ["\t"] # horizontal tab
   /\v/.match("\v").to_a.should == ["\v"] # vertical tab
@@ -141,7 +141,7 @@ on the `describe` string having the format explained above. Consequently,
 when using nested `describe` blocks, ensure that the first block begins with
 the method name.
 
-{% highlight ruby linenos %}
+{% highlight ruby %}
 # This is correct
 describe "String#eql?" do
   it "returns true if other has the same length and content" do
@@ -160,7 +160,7 @@ Contrast the _good_ example above with the one below. The following example
 deviates from the conventions for `describe` strings and uses "should" and
 single-quotes for the descriptions.
 
-{% highlight ruby linenos %}
+{% highlight ruby %}
 # This is NOT correct
 describe "String#eql?(string)" do
   it 'should return true if other has the same length and content' do
@@ -185,7 +185,7 @@ Many spec code examples refer to a particular class. To prevent name clashes
 with these different class definitions across all the specs, the classes
 should be scoped to a module. The convention is as follows:
 
-{% highlight ruby linenos %}
+{% highlight ruby %}
 module ObjectSpecs
   class SomeClass
   end
@@ -208,7 +208,7 @@ otherwise identical interfaces.)
 
 In `rubyspec/core/array/shared/collect.rb`
 
-{% highlight ruby linenos %}
+{% highlight ruby %}
     describe :array_collect, :shared => true do
       it "returns a copy of array with each element replaced by the value returned by block" do
         a = ['a', 'b', 'c', 'd']
@@ -225,7 +225,7 @@ In `rubyspec/core/array/shared/collect.rb`
 
 In `rubyspec/core/array/collect_spec.rb`
 
-{% highlight ruby linenos %}
+{% highlight ruby %}
 require File.dirname(__FILE__) + '/../../spec_helper'
 require File.dirname(__FILE__) + '/shared/collect.rb'
 
@@ -236,7 +236,7 @@ end
 
 In `rubyspec/core/array/map_spec.rb`
 
-{% highlight ruby linenos %}
+{% highlight ruby %}
 require File.dirname(__FILE__) + '/../../spec_helper'
 require File.dirname(__FILE__) + '/shared/collect.rb'
 
@@ -289,7 +289,7 @@ performs some action; or 2) `#to_int` is not called.
 
 It is conceivable that user code like the following exists:
 
-{% highlight ruby linenos %}
+{% highlight ruby %}
 class Silly
   def method_missing(sym, *args)
     return 1 if sym == :to_int
@@ -299,7 +299,7 @@ end
 
 In such case, the behavior of the following code would be different:
 
-{% highlight ruby linenos %}
+{% highlight ruby %}
 # The implementation calls #to_int without checking #respond_to?
 [1, 2].at(silly) # => 2
 
@@ -330,4 +330,3 @@ conventions apply here: use simple English to describe the behavior of the
 _language entities_ and only add detail as needed. Use a single `describe`
 block initially and add distinguishing `describe` blocks as necessary. Use
 `it` rather than `specify` whenever possible.
-

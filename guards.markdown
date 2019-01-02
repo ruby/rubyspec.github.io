@@ -59,7 +59,7 @@ range of versions. Any implementation whose version number is in the range
 will run the guarded specs. See the examples below and note the range form of
 the guard may include or exclude the ending version.
 
-{% highlight ruby linenos %}
+{% highlight ruby %}
 # Yields block if version >= 1.8.6-p114.
 ruby_version_is "1.8.6.114" do
   it "returns true" do
@@ -110,7 +110,7 @@ Likewise for the `little_endian` guard.
 The <code>platform_is</code> and <code>platform_is_not</code> guards are more
 complex. As their names suggest, they are inverses.
 
-{% highlight ruby linenos %}
+{% highlight ruby %}
 platform_is :linux, :bsd do
   it "opens the file" do
   end
@@ -119,7 +119,7 @@ end
 
 The guard above will yield if RUBY_PLATFORM matches either "linux" OR "bsd".
 
-{% highlight ruby linenos %}
+{% highlight ruby %}
 platform_is :linux, :wordsize => 32 do
   it "opens the file" do
   end
@@ -129,7 +129,7 @@ end
 The guard above will yield if RUBY_PLATFORM matches "linux" AND the processor
 word size is 32-bit.
 
-{% highlight ruby linenos %}
+{% highlight ruby %}
 platform_is_not :windows, :wordsize => 32 do
   it "opens the file" do
   end
@@ -142,7 +142,7 @@ the processor word size is not 32-bit.
 Special functionality exists for matching :windows and :java as platforms.
 For details, refer to the MSpec source.
 
-{% highlight ruby linenos %}
+{% highlight ruby %}
 platform_is :os => [:darwin, :bsd] do
   it "opens the file" do
   end
@@ -163,7 +163,7 @@ Sometimes a bug is discovered in the _standard_. In this case, we do two things:
 1. Add a `ruby_bug` guard that wraps the spec showing what is considered to be
    the _correct_ behavior.
 
-{% highlight ruby linenos %}
+{% highlight ruby %}
 ruby_bug "#5555", "1.8.6.114" do
   it "returns the sum" do
     (1 + 1).should == 2
@@ -222,7 +222,7 @@ The `compliant_on` and <code>not_compliant_on</code> guards are inverses.
 They document that the enclosed spec passes or does not pass on the listed
 implementations or platforms.
 
-{% highlight ruby linenos %}
+{% highlight ruby %}
 compliant_on :jruby, :rubinius do
   it "returns true" do
   end
@@ -244,7 +244,7 @@ specs are _always_ expected to run correctly on the _standard_. If there is
 version-specific behavior or a bug in the _standard_, use the
 <code>ruby_version_is</code> or `ruby_bug` guard instead.
 
-{% highlight ruby linenos %}
+{% highlight ruby %}
 not_compliant_on :rubinius do
   it "returns false" do
   end
@@ -281,7 +281,7 @@ obviously is in the gray line between implementation and interface.
 The <code>not_supported_on</code> guard documents that there is no behavior
 like that described in the guarded spec for the listed implementations.
 
-{% highlight ruby linenos %}
+{% highlight ruby %}
 not_supported_on :jruby do
   it "forks the process" do
   end
@@ -302,7 +302,7 @@ If an implementation does not conform to the _standard_ behavior but instead
 offers an alternative behavior, the spec illustrating that is wrapped in a
 `deviates_on` guard.
 
-{% highlight ruby linenos %}
+{% highlight ruby %}
 deviates_on :rubinius do
   it "coerces to two Bignums" do
   end
@@ -319,7 +319,7 @@ If an implementation offers a behavior that does not exist at all in the
 standard, the spec illustrating that behavior is wrapped in an `extended_on`
 guard.
 
-{% highlight ruby linenos %}
+{% highlight ruby %}
 extended_on :rubinius do
   it "returns an immutable vector" do
   end
@@ -352,7 +352,7 @@ This situation has been taken over by the `conflicts_with` guard below. These
 guards should now only be used if the particular runner framework itself is
 an issue.
 
-{% highlight ruby linenos %}
+{% highlight ruby %}
 runner_is :rspec do
   it "does something that only runs under RSpec" do
   end
@@ -370,7 +370,7 @@ end
 This guard wraps specs for methods whose behavior may be changed incompatibly
 by certain other classes.
 
-{% highlight ruby linenos %}
+{% highlight ruby %}
 conflicts_with :SomeClass do
   it "returns an Integer" do
   end
@@ -384,7 +384,7 @@ The above guard will NOT yield if SomeClass is defined.
 Some Ruby methods will only behave as expected if the process running the
 code example has superuser privileges.
 
-{% highlight ruby linenos %}
+{% highlight ruby %}
 as_superuser do
   describe "File.chown" do
   end
@@ -404,7 +404,7 @@ allows the spec to be investigated but not cause any failures.
 If a spec exposes a bug that is causing a segfault, the `ruby_bug` guard
 should be used.
 
-{% highlight ruby linenos %}
+{% highlight ruby %}
 quarantine! do
   it "does something that causes a segfault" do
   end
