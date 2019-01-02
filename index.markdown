@@ -34,7 +34,6 @@ Please refer to the [README](https://github.com/ruby/spec) and [CONTRIBUTING.md]
 
 ## Challenges
 
-* [Ruby 1.9 Issues]({{ site.baseurl }}/ruby-1.9-issues/)
 * [Bugs Found While Writing Specs]({{ site.baseurl }}/bugs_found/)
 
 
