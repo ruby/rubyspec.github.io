@@ -25,7 +25,7 @@ Please refer to the [README](https://github.com/ruby/spec) and [CONTRIBUTING.md]
 * [Style Guide]({{ site.baseurl }}/style_guide/)
 * [Helpers]({{ site.baseurl }}/helpers/)
 * [Guards]({{ site.baseurl }}/guards/)
-* [Matchers]({{ site.baseurl }}/matchers/)
+* [Matchers](https://github.com/ruby/spec/blob/master/CONTRIBUTING.md#matchers-and-expectations)
 * [Runners]({{ site.baseurl }}/runners/)
 * [Configuration]({{ site.baseurl }}/configuration/)
 
