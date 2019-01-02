@@ -8,7 +8,7 @@ File issues at [https://github.com/ruby/spec/issues/](https://github.com/ruby/sp
 
 ## Note
 
-This website is not maintained and contains old documentation
+This website is currently not maintained and contains old documentation
 which might no longer apply.
 Please refer to the [README](https://github.com/ruby/spec) and [CONTRIBUTING.md](https://github.com/ruby/spec/blob/master/CONTRIBUTING.md) instead, which are kept up-to-date.
 
