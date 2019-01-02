@@ -15,5 +15,5 @@ exclude:
   - ./public
   - ./stylesheets/*.scss
 markdown: rdiscount
-pygments: true
+highlighter: rouge
 port: 9876
