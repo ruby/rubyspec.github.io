@@ -5,7 +5,7 @@ layout: page
 ## Contributing to RubySpec
 
 The simplest way to get started writing specs is to fork the main [Github
-repo](http://github.com/ruby/rubyspec/), clone the [MSpec
+repo](http://github.com/ruby/spec/), clone the [MSpec
 repo](http://github.com/ruby/mspec/), and read the documentation here.
 Once you have written a spec and committed it to your fork, send a pull
 request.

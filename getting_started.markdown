@@ -28,10 +28,10 @@ to always use the latest MSpec from Github.
 ### Getting the RubySpecs
 
 The RubySpec source is available from
-[Github](http://github.com/ruby/rubyspec/tree/master).
+[Github](http://github.com/ruby/spec/tree/master).
 
 <pre>
-$ git clone git://github.com/ruby/rubyspec.git
+$ git clone git://github.com/ruby/spec.git
 </pre>
 
 If you are not working on the RubySpecs, you can checkout a particular version
