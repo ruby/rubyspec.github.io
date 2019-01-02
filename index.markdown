@@ -15,7 +15,7 @@ Please refer to the [README](https://github.com/ruby/spec) and [CONTRIBUTING.md]
 ## Introduction
 
 * [Overview]({{ site.baseurl }}/overview/)
-* [Getting Started]({{ site.baseurl }}/getting_started/)
+* [Getting Started](https://github.com/ruby/spec#running-the-specs)
 * [Current Standard]({{ site.baseurl }}/current_standard/)
 * [History]({{ site.baseurl }}/history/)
 * [Contributing]({{ site.baseurl }}/contributing/)

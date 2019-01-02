@@ -27,7 +27,7 @@ The following documents describe how the Rubinius specs are organized, the
 style used to write them, and special measures (guards) used to write a single
 body of specs that accommodates numerous different Ruby implementations.
 
-* [Getting Started]({{ site.baseurl }}/getting_started/) -- Get up and running with MSpec and the RubySpec files
+* [Getting Started](https://github.com/ruby/spec#running-the-specs) -- Get up and running with MSpec and the RubySpec files
 * [Ruby 1.9 Issues]({{ site.baseurl }}/ruby-1.9-issues/) -- Fixing the RubySpecs for Ruby 1.9.
 * [Organization]({{ site.baseurl }}/organization/) -- Where to find what you are looking for
 * [Style Guide]({{ site.baseurl }}/style_guide/) -- Rules to follow while writing or fixing specs
