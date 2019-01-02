@@ -14,6 +14,5 @@ exclude:
   - .gitignore
   - ./public
   - ./stylesheets/*.scss
-markdown: rdiscount
 highlighter: rouge
 port: 9876
