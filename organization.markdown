@@ -29,17 +29,13 @@ directory tree.
 
 ### Syntax-sensitive Specs
 
-There are three primary challenges in combining the 1.8 and 1.9 specs:
+There are three primary challenges in combining specs for multiple Ruby versions:
 
 1. Syntax differences
 1. Methods that behave differently
 1. Libraries or classes that are not part of the version
 
-The three issues above are addressed as follows:
-
-1. Put any syntax-sensitive specs into a version-specific file and use the `language_version` helper to conditionally run those specs. See [MSpec Helpers]({{ site.baseurl }}/helpers/) and the `language/method_spec.rb` specs for examples.
-1. Use <code>ruby_version_is</code> guards as usual for any methods or method behaviors specific to a particular version. See [MSpec Guards]({{ site.baseurl }}/guards/).
-1. Add exclusion lines to the <code>:files</code> config setting in either <code>ruby.1.8.mspec</code> or <code>ruby.1.9.mspec</code> for libraries or classes that should not be run in the respective version. See [MSpec Configuration]({{ site.baseurl }}/configuration/).
+All these are addressed by using <code>ruby_version_is</code> guards.
 
 ### Language
 

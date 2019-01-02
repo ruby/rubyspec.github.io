@@ -23,7 +23,6 @@ Please refer to the [README](https://github.com/ruby/spec) and [CONTRIBUTING.md]
 
 * [Organization]({{ site.baseurl }}/organization/)
 * [Style Guide]({{ site.baseurl }}/style_guide/)
-* [Helpers]({{ site.baseurl }}/helpers/)
 * [Guards]({{ site.baseurl }}/guards/)
 * [Matchers](https://github.com/ruby/spec/blob/master/CONTRIBUTING.md#matchers-and-expectations)
 * [Runners]({{ site.baseurl }}/runners/)
