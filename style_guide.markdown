@@ -6,7 +6,7 @@ layout: page
 
 Generally, [RSpec](http://rspec.info) specs describe the expected behavior of
 code. While RSpec is fairly young, there are some conventions for writing
-specs. The RubySpecs cover a wide variety of components, so we have developed
+specs. The ruby/spec specs cover a wide variety of components, so we have developed
 some pragmatic conventions to handle the various situations. As noted below,
 some conventions are more rigid than others.
 
@@ -274,7 +274,7 @@ methods, for example, `#to_ary`, `#to_int`, `#to_str`, that form an interface
 to Ruby's ducktyping behavior. String methods, for instance, may call
 `#to_str` when passed an argument that is not a String.
 
-The point of the RubySpecs is to describe behavior in such a way that if two
+The point of ruby/spec is to describe behavior in such a way that if two
 different implementations pass a spec, Ruby code that relies on behavior
 described by the spec will execute with the same result on either
 implementation.

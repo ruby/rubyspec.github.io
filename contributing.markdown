@@ -2,7 +2,7 @@
 layout: page
 ---
 
-## Contributing to RubySpec
+## Contributing to ruby/spec
 
 The simplest way to get started writing specs is to fork the [Github repo](http://github.com/ruby/spec/),
 go through the [README](https://github.com/ruby/spec) and read [CONTRIBUTING.md](https://github.com/ruby/spec/blob/master/CONTRIBUTING.md)

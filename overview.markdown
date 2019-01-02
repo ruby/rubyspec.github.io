@@ -4,7 +4,7 @@ layout: page
 
 ## Overview
 
-The RubySpec project aims to write a complete executable specification for the
+The ruby/spec project aims to write a complete executable specification for the
 [Ruby](http://ruby-lang.org) programming language that is syntax-compatible
 with [RSpec](http://rspec.info). RSpec is essentially a DSL (domain-specific
 language) for describing the behavior of code. This project contains specs
@@ -27,9 +27,9 @@ The following documents describe how the Rubinius specs are organized, the
 style used to write them, and special measures (guards) used to write a single
 body of specs that accommodates numerous different Ruby implementations.
 
-* [Getting Started](https://github.com/ruby/spec#running-the-specs) -- Get up and running with MSpec and the RubySpec files
+* [Getting Started](https://github.com/ruby/spec#running-the-specs) -- Get up and running with MSpec and the spec files
 * [Organization]({{ site.baseurl }}/organization/) -- Where to find what you are looking for
 * [Style Guide]({{ site.baseurl }}/style_guide/) -- Rules to follow while writing or fixing specs
 * [Guards]({{ site.baseurl }}/guards/) -- Understand how versions, platforms, and implementations play well together
 * [Runners]({{ site.baseurl }}/runners/) -- Detailed help for all the MSpec runner scripts
-* [Contributing]({{ site.baseurl }}/contributing/) -- How to get involved improving the RubySpecs
+* [Contributing]({{ site.baseurl }}/contributing/) -- How to get involved improving ruby/spec

@@ -2,7 +2,7 @@
 layout: page
 ---
 
-RubySpec is a project to write an executable specification for the [Ruby
+ruby/spec is a project to write an executable specification for the [Ruby
 Programming Language](http://ruby-lang.org/). The source code is [on GitHub](https://github.com/ruby/spec/).
 File issues at [https://github.com/ruby/spec/issues/](https://github.com/ruby/spec/issues/).
 
@@ -19,7 +19,7 @@ Please refer to the [README](https://github.com/ruby/spec) and [CONTRIBUTING.md]
 * [Contributing]({{ site.baseurl }}/contributing/)
 
 
-## Working on RubySpec
+## Working on ruby/spec
 
 * [Organization]({{ site.baseurl }}/organization/)
 * [Style Guide]({{ site.baseurl }}/style_guide/)

@@ -6,22 +6,22 @@ layout: page
 
 ### Overview
 
-The RubySpec project intends to provide a complete specification of the Ruby
+The ruby/spec project intends to provide a complete specification of the Ruby
 language and its libraries. There is a single _standard_ implementation of
 Ruby. The _standard_ includes the stable, released versions available from
 <http://ruby-lang.org>. At present, the _standard_ is 1.8.6, 1.8.7, and 1.9.2.
 Collectively, the _standard_ is often referred to as MatzRuby or MRI.
 
-The challenge for RubySpec is to correctly spec the different behaviors
-across versions, platforms, and implementations. To do this, the RubySpecs
-depend on _guards_ provided by MSpec. Guards are methods that may or may not
+The challenge for ruby/spec is to correctly spec the different behaviors
+across versions, platforms, and implementations. To do this, ruby/spec
+depends on _guards_ provided by MSpec. Guards are methods that may or may not
 take arguments and operate by yielding to a block if certain conditions are
 true. If the conditions for the guard are not true, the guard method does not
 yield to the block and the specs contained in the block are not run.
 
 The guards serve two functions: 1) controlling which specs are run; 2)
 documenting the specs. The documentation function of the guards is as
-important for RubySpec as controlling which specs are run. Additionally, the
+important for ruby/spec as controlling which specs are run. Additionally, the
 guard structure itself was chosen to be visually and conceptually similar to
 the <code>describe/it</code> blocks in the specs.
 
