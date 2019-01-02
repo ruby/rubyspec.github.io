@@ -12,12 +12,9 @@ to decide.
 
 When encountering a bug in MRI, use the following steps:
 
-1. Search the [Redmine MRI bug tracker](http://bugs.ruby-lang.org/) and the
-   ruby-core mailing list for the same or similar behavior.
+1. Search the [Redmine MRI bug tracker](https://bugs.ruby-lang.org/projects/ruby-trunk/issues)
+   for the same or similar behavior.
 1. If there is an existing ticket for the issue, use the ticket number in a
-   `ruby_bug` guard.
-1. If there is a ticket for version 1.9 but the bug also exists in version
-   1.8.7, file a backport request ticket. Use the 1.9 ticket number in the
    `ruby_bug` guard.
 1. If there is not an existing ticket, file one and use the ticket number in
    the `ruby_bug` guard.
