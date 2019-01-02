@@ -20,7 +20,7 @@ layout: page
  The `mkspec` script can be run repeatedly without affecting existing files. So, if you use it to generate files but do not fill in specs for them all. you can commit only the files that have specs and re-run the script later to re-create the files for methods not yet spec'd. In general, this is preferable to checking in numerous files that only have signpost specs in them. However, there are a number of previously empty files in the repository that have been updated using the new `mkspec` functionality.
 
 <pre>
- $ bin/mkspec -h
+ $ mkspec -h
  mkspec [options]
 
      -c, --constant CONSTANT          Class or Module to generate spec stubs for
@@ -42,17 +42,3 @@ layout: page
 
       $ mkspec -c Complex -rcomplex -b superspec
 </pre>
-
-### Notes
-
- The `mkspec` command is intended to be run by MatzRuby. The help text above gives examples of invoking `mkspec` under typical circumstances.
-
- Unlike the runner scripts, `mkspec` does not have a `--target` option. This are essentially two reasons for this. Firstly, the specs are for ensuring compatibility with the "standard" reference implementation (commonly called MRI, or MatzRuby). So, it is the classes and modules of that implementation that are of general interest. Secondly, having the `--target` option requires re-exec'ing the script with a different implementation. That complexity isn't really justified.
-
- However, if you need to create specs for an implementation-specific class or module, it's still rather easy to do. For example, to create Rubinius specs for the Mailbox class, you could use the following:
-
-<pre>
- shotgun/rubinius mspec/bin/mkspec -b spec/library/ -r mailbox -c Mailbox
-</pre>
-
-

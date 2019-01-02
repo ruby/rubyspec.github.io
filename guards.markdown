@@ -10,7 +10,7 @@ The ruby/spec project intends to provide a complete specification of the Ruby
 language and its libraries. There is a single _standard_ implementation of
 Ruby. The _standard_ includes the stable, released versions available from
 <http://ruby-lang.org>. At present, the _standard_ is 1.8.6, 1.8.7, and 1.9.2.
-Collectively, the _standard_ is often referred to as MatzRuby or MRI.
+Collectively, the _standard_ is often referred to as MRI.
 
 The challenge for ruby/spec is to correctly spec the different behaviors
 across versions, platforms, and implementations. To do this, ruby/spec
