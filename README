@@ -1,13 +1,12 @@
-The rubyspec.org website contains documentation about RubySpec (https://github.com/ruby/spec) and MSpec (https://github.com/ruby/mspec).
+This website contains documentation about ruby/spec (https://github.com/ruby/spec) and MSpec (https://github.com/ruby/mspec).
 
 LICENSE
 
-Copyright (c) 2011-2016 Brian Ford. All rights reserved.
-
-Creative Commons Attribution-NonCommercial-ShareAlike 3.0 Unported License.
-
+This website is a derivative by <a href="https://github.com/eregon">eregon</a> of rubyspec.org.
+The original work is Copyright &copy; 2011-2016 Brian Shirai.
+Both works are licensed under Creative Commons Attribution-NonCommercial-ShareAlike 3.0 Unported License.
 See www.creativecommons.org
 
 RUNNING LOCALLY
 
-RubySpec.org is built with Jekyll (https://github.com/mojombo/jekyll) and uses Pygments (http://pygments.org) for syntax highlighting.
+The site is built with Jekyll (https://jekyllrb.com/).
